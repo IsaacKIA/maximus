@@ -1863,3 +1863,180 @@ footer::before {
     transition-duration: .01ms !important;
   }
 }
+
+/* ══════════════════════════════════════════════════════════
+   PROFESSIONAL MEDICAL IMAGERY & VISUAL SHOWCASE SYSTEM
+   ══════════════════════════════════════════════════════════ */
+
+/* Service Card Image Thumbnails */
+.svc-img {
+  width: 100%;
+  height: 160px;
+  border-radius: var(--r);
+  overflow: hidden;
+  margin-bottom: 1.15rem;
+  position: relative;
+  background: var(--smoke);
+}
+.svc-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform .4s cubic-bezier(.22,.68,0,1.2);
+}
+.svc:hover .svc-img img {
+  transform: scale(1.06);
+}
+.svc-img-badge {
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+  background: rgba(13, 29, 86, 0.82);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #ffffff;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  padding: 0.2rem 0.55rem;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* Hero Team Feature Showcase */
+.hero-team-showcase {
+  margin-top: 2rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: var(--r-lg);
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  max-width: 520px;
+  transition: transform .3s ease, border-color .3s ease;
+}
+.hero-team-showcase:hover {
+  transform: translateY(-2px);
+  border-color: rgba(215, 43, 43, 0.4);
+}
+.hero-team-thumb {
+  width: 68px;
+  height: 68px;
+  border-radius: 12px;
+  overflow: hidden;
+  flex-shrink: 0;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+}
+.hero-team-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.hero-team-meta h4 {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 0.2rem;
+}
+.hero-team-meta p {
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.4;
+  margin: 0;
+}
+.hero-team-meta .verified-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--wa);
+  font-weight: 600;
+  font-size: 0.72rem;
+  margin-top: 0.35rem;
+}
+
+/* Editorial Photo Banner / Cards */
+.editorial-photo-card {
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  box-shadow: 0 20px 48px rgba(13, 29, 86, 0.12);
+  position: relative;
+  background: var(--white);
+  border: 1px solid var(--border);
+}
+.editorial-photo-card img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  transition: transform .5s ease;
+}
+.editorial-photo-card:hover img {
+  transform: scale(1.02);
+}
+.editorial-photo-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(180deg, transparent 0%, rgba(10, 20, 53, 0.92) 100%);
+  padding: 2.2rem 1.5rem 1.25rem;
+  color: #ffffff;
+}
+.editorial-photo-caption h4 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 0.25rem;
+}
+.editorial-photo-caption p {
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0;
+}
+
+/* Service Subpage Banner */
+.service-photo-banner {
+  width: 100%;
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  margin: 2rem 0 3rem;
+  box-shadow: 0 16px 44px rgba(13, 29, 86, 0.08);
+  border: 1px solid var(--border);
+  position: relative;
+  max-height: 420px;
+}
+.service-photo-banner img {
+  width: 100%;
+  height: 100%;
+  max-height: 420px;
+  object-fit: cover;
+  display: block;
+}
+.service-photo-tag {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  background: rgba(13, 29, 86, 0.88);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.4rem 0.85rem;
+  border-radius: 50px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+@media(max-width: 768px) {
+  .svc-img { height: 140px; }
+  .hero-team-showcase { flex-direction: row; padding: 0.85rem; gap: 0.9rem; }
+  .hero-team-thumb { width: 56px; height: 56px; }
+  .service-photo-banner { max-height: 260px; margin: 1.5rem 0 2rem; }
+}
+
