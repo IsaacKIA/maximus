@@ -1,0 +1,2109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Maximus HealthCare Consult — Ghana's most trusted community pharmacy and healthcare access platform. Medication delivered to your door. Corporate wellness. Chronic care subscriptions. East Legon, Accra.">
+<meta name="theme-color" content="#0D1D56">
+<title>Maximus HealthCare Consult — The Greatest HealthCare</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300;1,9..40,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* ── Reset ─────────────────────────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+img{display:block;max-width:100%}
+a{text-decoration:none;color:inherit}
+button{cursor:pointer;border:none;background:none;font:inherit}
+ul{list-style:none}
+:focus-visible{outline:2px solid var(--red);outline-offset:3px;border-radius:4px}
+
+/* ── Design Tokens ──────────────────────────────────────────── */
+:root{
+  --red:#D72B2B;
+  --red-dark:#A51E1E;
+  --red-light:#FAE8E8;
+  --red-mid:#E85A5A;
+  --navy:#1A2E7A;
+  --navy-dark:#0D1D56;
+  --navy-mid:#2D4499;
+  --navy-light:#E8ECF8;
+  --white:#FFFFFF;
+  --smoke:#F4F6FC;
+  --ink:#0A0A1A;
+  --muted:#5C5C75;
+  --border:#E2E4F0;
+  --wa:#25D366;
+  --wa-dark:#128C7E;
+  --r:10px;
+  --r-lg:18px;
+  --r-xl:26px;
+  --nav-h:72px;
+  --max:1240px;
+  --font-h:'DM Sans',system-ui,sans-serif;
+  --font-b:'Inter',system-ui,sans-serif;
+  --ease-out:cubic-bezier(.22,.68,0,1.2);
+  --ease-in:cubic-bezier(.55,.055,.675,.19);
+}
+
+/* ── Base ────────────────────────────────────────────────────── */
+body{
+  font-family:var(--font-b);
+  color:var(--ink);
+  background:var(--white);
+  line-height:1.65;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4,h5,h6{font-family:var(--font-h);line-height:1.12;}
+p{color:var(--muted);}
+
+/* ── Navigation ─────────────────────────────────────────────── */
+#nav{
+  position:fixed;top:0;left:0;right:0;z-index:999;
+  height:var(--nav-h);
+  display:flex;align-items:center;
+  padding:0 5%;
+  gap:auto;
+  transition:background .4s ease,backdrop-filter .4s ease,box-shadow .4s ease;
+}
+#nav.scrolled{
+  background:rgba(255,255,255,.93);
+  backdrop-filter:blur(24px);
+  -webkit-backdrop-filter:blur(24px);
+  box-shadow:0 1px 0 rgba(0,0,0,.08);
+}
+.nav-logo img{height:46px;width:auto;flex-shrink:0;transition:opacity .2s;}
+.nav-logo img:hover{opacity:.85;}
+.nav-center{
+  display:flex;align-items:center;gap:2.25rem;
+  margin:0 auto;
+}
+.nav-center > a{
+  font-family:var(--font-h);font-size:.875rem;font-weight:500;
+  color:rgba(255,255,255,.85);letter-spacing:.01em;
+  padding:.25rem 0;
+  position:relative;
+  transition:color .2s;
+}
+#nav.scrolled .nav-center > a{color:var(--ink);}
+.nav-center > a::after{
+  content:'';position:absolute;bottom:-2px;left:0;right:0;
+  height:1.5px;background:var(--red);border-radius:1px;
+  transform:scaleX(0);transform-origin:left;
+  transition:transform .25s var(--ease-out);
+}
+.nav-center > a:hover::after{transform:scaleX(1);}
+
+/* Mega menu */
+.has-mega{position:relative;}
+.mega{
+  display:none;
+  position:absolute;top:calc(100% + 12px);left:50%;
+  transform:translateX(-50%);
+  background:var(--white);
+  border-radius:var(--r-xl);
+  box-shadow:0 4px 6px rgba(0,0,0,.04), 0 20px 60px rgba(10,15,60,.14);
+  padding:1.5rem;
+  min-width:540px;
+  display:none;
+  grid-template-columns:1fr 1fr;
+  gap:.5rem;
+  border:1px solid var(--border);
+}
+.has-mega:hover .mega,
+.has-mega:focus-within .mega{display:grid;}
+.mega-item{
+  display:flex;align-items:flex-start;gap:.75rem;
+  padding:.85rem 1rem;border-radius:var(--r);
+  transition:background .18s;
+}
+.mega-item:hover{background:var(--smoke);}
+.mega-ic{
+  width:38px;height:38px;border-radius:9px;
+  background:var(--red-light);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.1rem;flex-shrink:0;margin-top:1px;
+}
+.mega-item h4{font-size:.84rem;font-weight:600;color:var(--navy);margin-bottom:.15rem;}
+.mega-item p{font-size:.76rem;color:var(--muted);max-width:none;line-height:1.4;}
+
+.nav-right{display:flex;align-items:center;gap:.75rem;}
+.nav-cta{
+  display:inline-flex;align-items:center;gap:.45rem;
+  background:var(--wa);color:var(--white);
+  padding:.55rem 1.1rem;border-radius:50px;
+  font-family:var(--font-h);font-size:.84rem;font-weight:600;
+  letter-spacing:.01em;
+  box-shadow:0 4px 14px rgba(37,211,102,.35);
+  transition:transform .2s,box-shadow .2s,background .2s;
+  white-space:nowrap;
+}
+.nav-cta:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(37,211,102,.45);background:#20b85a;}
+.nav-cta svg{width:16px;height:16px;fill:currentColor;flex-shrink:0;}
+
+/* Hamburger */
+.hamburger{
+  display:none;flex-direction:column;justify-content:center;
+  gap:5px;width:38px;height:38px;margin-left:auto;
+  border-radius:var(--r);transition:background .2s;
+}
+.hamburger:hover{background:rgba(255,255,255,.1);}
+#nav.scrolled .hamburger:hover{background:var(--smoke);}
+.hamburger span{
+  width:22px;height:1.5px;border-radius:1px;
+  background:var(--white);
+  transition:transform .3s,opacity .3s;
+  align-self:center;
+}
+#nav.scrolled .hamburger span{background:var(--ink);}
+
+/* ── HERO ─────────────────────────────────────────────────────── */
+.hero{
+  min-height:100dvh;
+  background:var(--navy-dark);
+  display:flex;align-items:center;
+  padding:calc(var(--nav-h) + 4rem) 5% 5rem;
+  position:relative;overflow:hidden;
+}
+
+/* geometric accent — single diagonal flush right */
+.hero::before{
+  content:'';position:absolute;
+  top:0;right:0;bottom:0;
+  width:46%;
+  background:linear-gradient(150deg,transparent 0%,rgba(215,43,43,.09) 60%,rgba(215,43,43,.03) 100%);
+  pointer-events:none;
+}
+/* bottom glow */
+.hero::after{
+  content:'';position:absolute;
+  bottom:-120px;left:5%;
+  width:560px;height:560px;border-radius:50%;
+  background:radial-gradient(circle,rgba(26,46,122,.55) 0%,transparent 70%);
+  pointer-events:none;
+}
+/* thin red vertical accent */
+.hero-accent{
+  position:absolute;top:0;right:44%;bottom:0;
+  width:1px;background:linear-gradient(to bottom,transparent,rgba(215,43,43,.3) 30%,rgba(215,43,43,.3) 70%,transparent);
+  pointer-events:none;
+}
+
+.hero-inner{
+  position:relative;z-index:2;
+  display:grid;grid-template-columns:1fr 420px;
+  gap:3.5rem;align-items:center;
+  max-width:var(--max);margin:0 auto;width:100%;
+}
+
+/* eyebrow pill */
+.hero-pill{
+  display:inline-flex;align-items:center;gap:.5rem;
+  border:1px solid rgba(215,43,43,.3);
+  border-radius:50px;
+  padding:.35rem .9rem;
+  font-size:.75rem;font-weight:500;
+  color:rgba(255,255,255,.7);letter-spacing:.03em;
+  margin-bottom:1.5rem;width:fit-content;
+  background:rgba(215,43,43,.08);
+}
+.hero-pill-dot{
+  width:6px;height:6px;border-radius:50%;
+  background:var(--red);flex-shrink:0;
+  box-shadow:0 0 0 3px rgba(215,43,43,.2);
+  animation:dot-pulse 2.4s ease-in-out infinite;
+}
+@keyframes dot-pulse{
+  0%,100%{box-shadow:0 0 0 3px rgba(215,43,43,.2);}
+  50%{box-shadow:0 0 0 7px rgba(215,43,43,0);}
+}
+
+.hero h1{
+  font-size:clamp(2.75rem,4.5vw,4.25rem);
+  font-weight:700;
+  color:var(--white);
+  letter-spacing:-.025em;
+  line-height:1.08;
+  margin-bottom:1.5rem;
+}
+.hero h1 span{
+  display:block;
+  color:var(--red);
+  font-style:italic;
+  font-weight:300;
+}
+.hero-body{
+  font-size:1.05rem;font-weight:300;
+  color:rgba(255,255,255,.58);
+  max-width:48ch;line-height:1.75;
+  margin-bottom:2.5rem;
+}
+
+.hero-btns{display:flex;gap:.85rem;flex-wrap:wrap;}
+.btn-red{
+  display:inline-flex;align-items:center;gap:.55rem;
+  background:var(--red);color:var(--white);
+  padding:.85rem 1.85rem;border-radius:50px;
+  font-family:var(--font-h);font-size:.92rem;font-weight:600;
+  box-shadow:0 8px 28px rgba(215,43,43,.42);
+  transition:transform .22s,box-shadow .22s,background .22s;
+  white-space:nowrap;
+}
+.btn-red:hover{
+  transform:translateY(-3px);
+  box-shadow:0 14px 36px rgba(215,43,43,.55);
+  background:var(--red-dark);
+}
+.btn-outline-w{
+  display:inline-flex;align-items:center;gap:.55rem;
+  border:1.5px solid rgba(255,255,255,.2);
+  color:rgba(255,255,255,.8);
+  padding:.85rem 1.6rem;border-radius:50px;
+  font-family:var(--font-h);font-size:.92rem;font-weight:500;
+  transition:border-color .2s,color .2s,background .2s;
+}
+.btn-outline-w:hover{
+  border-color:rgba(255,255,255,.55);
+  color:var(--white);
+  background:rgba(255,255,255,.05);
+}
+
+/* trust numbers */
+.hero-metrics{
+  display:flex;gap:2.5rem;flex-wrap:wrap;
+  margin-top:3.5rem;padding-top:2.25rem;
+  border-top:1px solid rgba(255,255,255,.08);
+}
+.metric{}
+.metric-val{
+  font-family:var(--font-h);font-size:1.65rem;font-weight:700;
+  color:var(--white);line-height:1;
+}
+.metric-label{
+  font-size:.72rem;font-weight:400;letter-spacing:.04em;
+  color:rgba(255,255,255,.38);margin-top:.2rem;
+  text-transform:uppercase;
+}
+
+/* hero right card */
+.hero-card{
+  background:rgba(255,255,255,.055);
+  border:1px solid rgba(255,255,255,.09);
+  border-radius:var(--r-xl);
+  padding:1.75rem;
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+}
+.hero-card-hd{
+  font-family:var(--font-h);font-size:.82rem;font-weight:500;
+  color:rgba(255,255,255,.5);
+  letter-spacing:.06em;text-transform:uppercase;
+  margin-bottom:1.1rem;
+}
+.qlink{
+  display:flex;align-items:center;gap:.85rem;
+  padding:.9rem 1rem;
+  border:1px solid rgba(255,255,255,.07);
+  border-radius:var(--r);
+  margin-bottom:.5rem;
+  transition:background .18s,border-color .18s;
+  cursor:pointer;
+}
+.qlink:hover{background:rgba(255,255,255,.08);border-color:rgba(215,43,43,.3);}
+.qlink-ic{
+  width:34px;height:34px;border-radius:8px;
+  background:rgba(215,43,43,.2);
+  display:flex;align-items:center;justify-content:center;
+  font-size:.95rem;flex-shrink:0;
+  transition:background .18s;
+}
+.qlink:hover .qlink-ic{background:rgba(215,43,43,.35);}
+.qlink-text{font-size:.84rem;font-weight:500;color:rgba(255,255,255,.82);flex:1;}
+.qlink-arr{
+  font-size:.9rem;color:rgba(255,255,255,.25);
+  transition:transform .2s,color .2s;
+}
+.qlink:hover .qlink-arr{transform:translateX(4px);color:var(--red);}
+
+.wa-btn-card{
+  display:flex;align-items:center;justify-content:center;gap:.65rem;
+  background:var(--wa);color:var(--white);
+  border-radius:var(--r);padding:.95rem;
+  font-family:var(--font-h);font-size:.9rem;font-weight:700;
+  margin-top:.85rem;
+  box-shadow:0 6px 24px rgba(37,211,102,.28);
+  transition:transform .2s,box-shadow .2s;
+}
+.wa-btn-card:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(37,211,102,.42);}
+.wa-btn-card svg{width:19px;height:19px;fill:currentColor;}
+
+/* ── Impact band ─────────────────────────────────────────────── */
+.band{
+  background:var(--red);
+  padding:1.5rem 5%;
+}
+.band-inner{
+  max-width:var(--max);margin:0 auto;
+  display:flex;justify-content:space-between;
+  align-items:center;flex-wrap:wrap;gap:1.5rem;
+}
+.band-stat{text-align:center;}
+.band-num{
+  font-family:var(--font-h);font-size:1.7rem;font-weight:700;
+  color:var(--white);line-height:1;
+}
+.band-label{font-size:.72rem;color:rgba(255,255,255,.65);letter-spacing:.03em;text-transform:uppercase;margin-top:.2rem;}
+.band-divider{width:1px;height:40px;background:rgba(255,255,255,.2);}
+
+/* ── Section anatomy ─────────────────────────────────────────── */
+.s{padding:6rem 5%;}
+.s-smoke{background:var(--smoke);}
+.s-navy{background:var(--navy-dark);}
+.inner{max-width:var(--max);margin:0 auto;}
+
+.s-head{margin-bottom:3.5rem;}
+.s-tag{
+  display:inline-flex;align-items:center;gap:.4rem;
+  font-size:.72rem;font-weight:600;letter-spacing:.08em;
+  color:var(--red);text-transform:uppercase;
+  margin-bottom:.75rem;
+}
+.s-tag::before{content:'';width:18px;height:1.5px;background:var(--red);border-radius:1px;}
+.s-head h2{
+  font-size:clamp(1.9rem,3vw,2.65rem);font-weight:700;
+  color:var(--ink);letter-spacing:-.025em;margin-bottom:.85rem;
+}
+.s-head h2 em{font-style:normal;color:var(--red);}
+.s-head p{font-size:1rem;line-height:1.7;max-width:54ch;}
+
+/* ── Services grid ─────────────────────────────────────────── */
+.svc-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:1.25rem;
+}
+.svc{
+  background:var(--white);
+  border:1px solid var(--border);
+  border-radius:var(--r-lg);
+  padding:1.75rem 1.5rem;
+  position:relative;overflow:hidden;
+  transition:transform .25s var(--ease-out),box-shadow .25s,border-color .25s;
+}
+.svc::after{
+  content:'';position:absolute;
+  bottom:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--red),var(--navy));
+  transform:scaleX(0);transform-origin:left;
+  transition:transform .3s var(--ease-out);
+}
+.svc:hover{
+  transform:translateY(-6px);
+  box-shadow:0 24px 48px rgba(26,46,122,.1);
+  border-color:transparent;
+}
+.svc:hover::after{transform:scaleX(1);}
+.svc-ic{
+  width:48px;height:48px;border-radius:12px;
+  background:var(--red-light);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.3rem;margin-bottom:1.2rem;
+  transition:background .2s,transform .2s;
+}
+.svc:hover .svc-ic{background:var(--red);transform:scale(1.08);}
+.svc h3{font-size:.98rem;font-weight:600;color:var(--navy);margin-bottom:.45rem;}
+.svc p{font-size:.82rem;line-height:1.6;max-width:none;margin-bottom:1.1rem;}
+.svc-cta{
+  display:inline-flex;align-items:center;gap:.3rem;
+  font-size:.78rem;font-weight:600;color:var(--red);
+  transition:gap .2s;
+}
+.svc:hover .svc-cta{gap:.55rem;}
+
+/* ── Pharmacy split ─────────────────────────────────────────── */
+.ph-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:4rem;align-items:start;
+}
+.ph-heading{
+  font-size:clamp(1.75rem,2.8vw,2.4rem);
+  font-weight:700;color:var(--white);
+  letter-spacing:-.025em;line-height:1.1;
+  margin-bottom:.85rem;
+}
+.ph-body{
+  font-size:.95rem;font-weight:300;line-height:1.75;
+  color:rgba(255,255,255,.5);
+  margin-bottom:2.25rem;max-width:none;
+}
+.ph-steps{display:flex;flex-direction:column;gap:.85rem;}
+.step{
+  display:flex;gap:1.1rem;
+  padding:1.1rem 1.25rem;
+  background:rgba(255,255,255,.045);
+  border:1px solid rgba(255,255,255,.07);
+  border-radius:var(--r);
+  transition:background .2s,border-color .2s;
+}
+.step:hover{background:rgba(255,255,255,.08);border-color:rgba(215,43,43,.2);}
+.step-num{
+  width:34px;height:34px;border-radius:50%;
+  background:var(--red);color:var(--white);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--font-h);font-size:.8rem;font-weight:700;
+  flex-shrink:0;
+}
+.step h4{font-size:.9rem;font-weight:600;color:var(--white);margin-bottom:.2rem;}
+.step p{font-size:.8rem;color:rgba(255,255,255,.45);max-width:none;line-height:1.55;}
+
+.ph-card{
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:var(--r-xl);
+  padding:2.25rem;
+  position:sticky;top:calc(var(--nav-h) + 1.5rem);
+}
+.ph-card h3{
+  font-family:var(--font-h);font-size:1.3rem;font-weight:700;
+  color:var(--white);margin-bottom:.55rem;
+}
+.ph-card .sub{
+  font-size:.85rem;color:rgba(255,255,255,.45);
+  margin-bottom:1.75rem;max-width:none;line-height:1.6;
+}
+.btn-wa-full{
+  display:flex;align-items:center;justify-content:center;gap:.7rem;
+  background:var(--wa);color:var(--white);
+  padding:1.05rem;border-radius:var(--r);
+  font-family:var(--font-h);font-size:1rem;font-weight:700;
+  width:100%;
+  box-shadow:0 8px 28px rgba(37,211,102,.3);
+  transition:transform .2s,box-shadow .2s;
+}
+.btn-wa-full:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(37,211,102,.45);}
+.btn-wa-full svg{width:22px;height:22px;fill:currentColor;}
+.ph-trust{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:.6rem;margin-top:.85rem;
+}
+.ph-trust-item{
+  padding:.75rem .5rem;
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.06);
+  border-radius:var(--r);text-align:center;
+}
+.ph-trust-item strong{display:block;font-size:.82rem;color:var(--white);margin-bottom:.15rem;}
+.ph-trust-item span{font-size:.7rem;color:rgba(255,255,255,.4);line-height:1.35;display:block;}
+
+/* ── Corporate ─────────────────────────────────────────────── */
+.pkg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-bottom:2rem;}
+.pkg{
+  border-radius:var(--r-lg);padding:2rem 1.75rem;
+  background:var(--white);border:1px solid var(--border);
+  transition:transform .25s var(--ease-out),box-shadow .25s;
+}
+.pkg:hover{transform:translateY(-6px);box-shadow:0 24px 48px rgba(26,46,122,.1);}
+.pkg.featured{
+  background:var(--navy-dark);border-color:transparent;
+  box-shadow:0 20px 50px rgba(13,29,86,.35);
+}
+.pkg-badge{
+  display:inline-block;font-size:.7rem;font-weight:600;
+  letter-spacing:.06em;text-transform:uppercase;
+  padding:.25rem .65rem;border-radius:20px;
+  margin-bottom:1.1rem;
+}
+.pkg:not(.featured) .pkg-badge{background:var(--red-light);color:var(--red-dark);}
+.pkg.featured .pkg-badge{background:var(--red);color:var(--white);}
+.pkg h3{font-size:1.05rem;font-weight:700;margin-bottom:.35rem;}
+.pkg:not(.featured) h3{color:var(--navy);}
+.pkg.featured h3{color:var(--white);}
+.pkg-price{
+  font-family:var(--font-h);font-size:1.5rem;font-weight:700;
+  margin-bottom:.75rem;
+}
+.pkg:not(.featured) .pkg-price{color:var(--red);}
+.pkg.featured .pkg-price{color:var(--white);}
+.pkg-price span{font-size:.8rem;font-weight:400;color:var(--muted);}
+.pkg.featured .pkg-price span{color:rgba(255,255,255,.45);}
+.pkg-list{display:flex;flex-direction:column;gap:.45rem;margin-bottom:1.5rem;}
+.pkg-list li{
+  display:flex;gap:.6rem;align-items:flex-start;
+  font-size:.83rem;
+}
+.pkg:not(.featured) .pkg-list li{color:var(--muted);}
+.pkg.featured .pkg-list li{color:rgba(255,255,255,.65);}
+.pkg-list li::before{
+  content:'✓';font-weight:700;font-size:.78rem;
+  flex-shrink:0;margin-top:.05rem;
+}
+.pkg:not(.featured) .pkg-list li::before{color:var(--red);}
+.pkg.featured .pkg-list li::before{color:var(--wa);}
+.btn-pkg{
+  display:flex;align-items:center;justify-content:center;gap:.5rem;
+  padding:.85rem;border-radius:var(--r);
+  font-family:var(--font-h);font-size:.88rem;font-weight:600;
+  width:100%;transition:transform .2s,opacity .2s;
+}
+.btn-pkg:hover{transform:translateY(-2px);opacity:.9;}
+.pkg:not(.featured) .btn-pkg{background:var(--smoke);color:var(--navy);border:1px solid var(--border);}
+.pkg.featured .btn-pkg{background:var(--wa);color:var(--white);box-shadow:0 6px 20px rgba(37,211,102,.3);}
+.btn-pkg svg{width:17px;height:17px;fill:currentColor;}
+
+.corp-bottom{
+  background:var(--navy);border-radius:var(--r-xl);
+  padding:3rem;
+  display:flex;align-items:center;justify-content:space-between;
+  gap:2rem;flex-wrap:wrap;
+}
+.corp-bottom h3{
+  font-size:1.35rem;font-weight:700;color:var(--white);
+  max-width:40ch;line-height:1.3;
+}
+.corp-bottom p{
+  font-size:.88rem;color:rgba(255,255,255,.5);
+  margin-top:.5rem;max-width:42ch;
+}
+.btn-wa-inline{
+  display:inline-flex;align-items:center;gap:.6rem;
+  background:var(--wa);color:var(--white);
+  padding:.9rem 1.85rem;border-radius:50px;
+  font-family:var(--font-h);font-size:.92rem;font-weight:700;
+  box-shadow:0 6px 20px rgba(37,211,102,.35);
+  transition:transform .2s,box-shadow .2s;white-space:nowrap;
+}
+.btn-wa-inline:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(37,211,102,.48);}
+.btn-wa-inline svg{width:19px;height:19px;fill:currentColor;}
+
+/* ── Screening ─────────────────────────────────────────────── */
+.scr-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;}
+.checks-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.check{
+  padding:1.35rem 1.1rem;border-radius:var(--r);
+  background:var(--white);border:1px solid var(--border);
+  text-align:center;
+  transition:transform .22s,box-shadow .22s;
+}
+.check:hover{transform:translateY(-4px);box-shadow:0 16px 36px rgba(26,46,122,.08);}
+.check-emoji{font-size:1.5rem;margin-bottom:.55rem;}
+.check h4{font-size:.88rem;font-weight:600;color:var(--navy);margin-bottom:.25rem;}
+.check p{font-size:.76rem;max-width:none;line-height:1.45;}
+
+.scr-content h2{
+  font-size:clamp(1.65rem,2.5vw,2.2rem);font-weight:700;
+  color:var(--ink);letter-spacing:-.02em;margin-bottom:1rem;
+}
+.scr-content h2 em{font-style:normal;color:var(--red);}
+.scr-content p{font-size:.95rem;line-height:1.7;margin-bottom:1.25rem;}
+.scr-badge{
+  display:inline-flex;align-items:center;gap:.45rem;
+  background:var(--navy-dark);color:var(--white);
+  border-radius:50px;padding:.45rem 1rem;
+  font-size:.78rem;font-weight:600;margin-bottom:1.35rem;
+}
+
+/* ── Why us ────────────────────────────────────────────────── */
+.why-list-outer{display:flex;flex-direction:column;gap:4rem;}
+.why-row{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;}
+.why-row.flip{direction:rtl;}
+.why-row.flip>*{direction:ltr;}
+.why-visual{
+  background:var(--navy-dark);
+  border-radius:var(--r-xl);
+  padding:2.75rem;min-height:300px;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  position:relative;overflow:hidden;
+}
+.why-visual::before{
+  content:'';position:absolute;top:0;right:0;bottom:0;
+  width:40%;background:linear-gradient(135deg,transparent,rgba(215,43,43,.08));
+}
+.why-bg-num{
+  position:absolute;top:1.5rem;right:1.75rem;
+  font-family:var(--font-h);font-size:5rem;font-weight:700;
+  color:rgba(255,255,255,.04);line-height:1;user-select:none;
+}
+.why-tag{
+  font-size:.68rem;font-weight:600;letter-spacing:.1em;
+  color:rgba(255,255,255,.35);text-transform:uppercase;
+  margin-bottom:.5rem;
+}
+.why-big{
+  font-family:var(--font-h);font-size:2.4rem;font-weight:700;
+  color:var(--white);line-height:1;
+}
+.why-big-label{font-size:.8rem;color:rgba(255,255,255,.4);margin-top:.3rem;}
+.why-content h3{
+  font-size:1.45rem;font-weight:700;color:var(--ink);
+  letter-spacing:-.02em;margin-bottom:.85rem;
+}
+.why-content .lead{
+  font-size:.98rem;line-height:1.72;margin-bottom:1.35rem;
+}
+.why-bullets{display:flex;flex-direction:column;gap:.55rem;}
+.why-bullets li{
+  display:flex;gap:.7rem;align-items:flex-start;
+  font-size:.88rem;color:var(--muted);
+}
+.why-bullets li::before{
+  content:'';width:5px;height:5px;border-radius:50%;
+  background:var(--red);flex-shrink:0;margin-top:.45rem;
+}
+
+/* ── Testimonials ─────────────────────────────────────────── */
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;}
+.testi{
+  padding:2rem 1.75rem;border-radius:var(--r-lg);
+  background:var(--white);border:1px solid var(--border);
+  display:flex;flex-direction:column;
+}
+.testi-marks{
+  font-size:3rem;line-height:.8;
+  color:var(--red);font-family:Georgia,serif;
+  margin-bottom:.75rem;opacity:.7;
+}
+.testi-text{
+  font-size:.88rem;line-height:1.72;
+  color:var(--muted);font-style:italic;
+  flex:1;margin-bottom:1.35rem;max-width:none;
+}
+.testi-footer{display:flex;align-items:center;gap:.75rem;}
+.testi-av{
+  width:38px;height:38px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:700;font-size:.85rem;color:var(--white);flex-shrink:0;
+}
+.testi-name{font-size:.88rem;font-weight:600;color:var(--ink);}
+.testi-role{font-size:.75rem;color:var(--muted);}
+
+/* ── Contact / Book ────────────────────────────────────────── */
+.book-wrap{
+  background:var(--navy-dark);
+  border-radius:var(--r-xl);
+  padding:4rem;
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:4rem;align-items:start;
+  position:relative;overflow:hidden;
+}
+.book-wrap::after{
+  content:'';position:absolute;
+  top:-80px;right:-80px;width:280px;height:280px;border-radius:50%;
+  background:rgba(215,43,43,.06);pointer-events:none;
+}
+.book-content h2{
+  font-size:clamp(1.6rem,2.5vw,2.2rem);
+  font-weight:700;color:var(--white);
+  letter-spacing:-.025em;margin-bottom:.85rem;
+}
+.book-content .lead{
+  font-size:.95rem;color:rgba(255,255,255,.5);
+  line-height:1.75;margin-bottom:2rem;max-width:none;
+}
+.book-details{display:flex;flex-direction:column;gap:.75rem;}
+.book-detail{
+  display:flex;align-items:flex-start;gap:.75rem;
+  font-size:.88rem;color:rgba(255,255,255,.6);
+}
+.book-detail-icon{font-size:1.05rem;flex-shrink:0;margin-top:.05rem;}
+.book-actions{display:flex;flex-direction:column;gap:.85rem;}
+.book-main{
+  display:flex;align-items:center;justify-content:center;gap:.7rem;
+  background:var(--wa);color:var(--white);
+  padding:1.1rem;border-radius:var(--r);
+  font-family:var(--font-h);font-size:1.05rem;font-weight:700;
+  box-shadow:0 8px 28px rgba(37,211,102,.3);
+  transition:transform .2s,box-shadow .2s;
+}
+.book-main:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(37,211,102,.45);}
+.book-main svg{width:22px;height:22px;fill:currentColor;}
+.book-opts{display:grid;grid-template-columns:1fr 1fr;gap:.65rem;}
+.book-opt{
+  display:flex;flex-direction:column;align-items:center;gap:.35rem;
+  padding:.95rem .75rem;
+  border-radius:var(--r);
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.07);
+  font-size:.79rem;color:rgba(255,255,255,.55);
+  font-weight:500;text-align:center;
+  transition:background .18s,border-color .18s,color .18s;
+}
+.book-opt:hover{
+  background:rgba(255,255,255,.09);
+  border-color:rgba(37,211,102,.25);
+  color:rgba(255,255,255,.8);
+}
+.book-opt-ic{font-size:1.25rem;}
+
+/* ── Footer ────────────────────────────────────────────────── */
+footer{
+  background:#080814;
+  padding:4rem 5% 2rem;
+  border-top:1px solid rgba(255,255,255,.04);
+}
+.ft-grid{
+  max-width:var(--max);margin:0 auto;
+  display:grid;grid-template-columns:1.7fr 1fr 1fr 1fr;
+  gap:3rem;margin-bottom:3rem;
+}
+.ft-brand img{height:42px;width:auto;margin-bottom:1rem;}
+.ft-brand p{font-size:.82rem;line-height:1.7;color:rgba(255,255,255,.35);max-width:28ch;}
+.ft-col h4{
+  font-family:var(--font-h);font-size:.82rem;font-weight:600;
+  color:rgba(255,255,255,.55);letter-spacing:.06em;text-transform:uppercase;
+  margin-bottom:1.25rem;
+}
+.ft-col ul{display:flex;flex-direction:column;gap:.6rem;}
+.ft-col a{
+  font-size:.83rem;color:rgba(255,255,255,.38);
+  transition:color .2s;
+}
+.ft-col a:hover{color:rgba(255,255,255,.85);}
+.ft-bottom{
+  max-width:var(--max);margin:0 auto;
+  border-top:1px solid rgba(255,255,255,.05);
+  padding-top:1.5rem;
+  display:flex;justify-content:space-between;align-items:center;
+  flex-wrap:wrap;gap:.75rem;
+}
+.ft-bottom-text{font-size:.77rem;color:rgba(255,255,255,.25);}
+.ft-wa-badge{
+  display:inline-flex;align-items:center;gap:.45rem;
+  background:rgba(37,211,102,.12);color:var(--wa);
+  border:1px solid rgba(37,211,102,.2);
+  padding:.4rem .9rem;border-radius:50px;
+  font-size:.78rem;font-weight:600;
+  transition:background .2s,border-color .2s;
+}
+.ft-wa-badge:hover{background:rgba(37,211,102,.2);border-color:rgba(37,211,102,.35);}
+.ft-wa-badge svg{width:14px;height:14px;fill:currentColor;}
+
+/* ── Float WA button ────────────────────────────────────────── */
+.float-wa{
+  position:fixed;bottom:1.75rem;right:1.75rem;z-index:900;
+  width:56px;height:56px;border-radius:50%;
+  background:var(--wa);
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 6px 28px rgba(37,211,102,.5);
+  transition:transform .2s,box-shadow .2s;
+  animation:wa-float 3.5s ease-in-out infinite;
+}
+.float-wa::before{
+  content:'Chat with us';
+  position:absolute;right:calc(100% + .6rem);
+  background:var(--ink);color:var(--white);
+  font-size:.75rem;font-weight:500;
+  padding:.35rem .75rem;border-radius:6px;
+  white-space:nowrap;opacity:0;
+  pointer-events:none;
+  transition:opacity .2s;
+}
+.float-wa:hover::before{opacity:1;}
+.float-wa:hover{transform:scale(1.1);box-shadow:0 10px 36px rgba(37,211,102,.6);}
+.float-wa svg{width:28px;height:28px;fill:var(--white);}
+@keyframes wa-float{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-5px);}
+}
+
+/* ── Mobile overlay & drawer ─────────────────────────────── */
+.mob-overlay{
+  position:fixed;inset:0;background:rgba(5,5,20,.6);
+  z-index:1050;opacity:0;pointer-events:none;
+  transition:opacity .3s;backdrop-filter:blur(3px);
+}
+.mob-overlay.on{opacity:1;pointer-events:all;}
+.mob-drawer{
+  position:fixed;top:0;right:-100%;bottom:0;
+  width:min(85%,320px);
+  background:var(--white);
+  z-index:1055;
+  padding:5.5rem 1.75rem 2rem;
+  transition:right .35s var(--ease-out);
+  overflow-y:auto;
+  box-shadow:-30px 0 80px rgba(0,0,0,.18);
+}
+.mob-drawer.on{right:0;}
+.mob-close{
+  position:absolute;top:1.25rem;right:1.25rem;
+  width:36px;height:36px;border-radius:50%;
+  background:var(--smoke);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.2rem;color:var(--ink);
+  transition:background .2s;
+}
+.mob-close:hover{background:var(--border);}
+.mob-links a{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:.9rem 0;
+  font-family:var(--font-h);font-size:.97rem;font-weight:500;
+  color:var(--ink);border-bottom:1px solid var(--border);
+}
+.mob-links a:last-child{border-bottom:none;}
+.mob-wa{
+  margin-top:1.5rem;
+  display:flex;align-items:center;justify-content:center;gap:.55rem;
+  background:var(--wa);color:var(--white);
+  padding:1rem;border-radius:var(--r);
+  font-family:var(--font-h);font-weight:700;font-size:.92rem;
+  box-shadow:0 6px 20px rgba(37,211,102,.3);
+}
+.mob-wa svg{width:18px;height:18px;fill:currentColor;}
+
+/* ── Responsive ─────────────────────────────────────────── */
+@media(max-width:1100px){
+  .svc-grid{grid-template-columns:repeat(2,1fr);}
+}
+@media(max-width:900px){
+  .hero-inner,.ph-grid,.why-row,.scr-grid,.book-wrap,.ft-grid{grid-template-columns:1fr;}
+  .why-row.flip{direction:ltr;}
+  .hero-card,.band-divider{display:none;}
+  .nav-center,.nav-cta{display:none;}
+  .hamburger{display:flex;}
+  .hero{padding-top:calc(var(--nav-h) + 2.5rem);}
+  .pkg-grid{grid-template-columns:1fr;}
+  .testi-grid{grid-template-columns:1fr;}
+  .ft-grid{grid-template-columns:1fr 1fr;}
+  .book-wrap{padding:2.5rem;}
+  .corp-bottom{flex-direction:column;text-align:center;}
+}
+@media(max-width:560px){
+  .s{padding:4rem 5%;}
+  .svc-grid{grid-template-columns:1fr;}
+  .checks-grid{grid-template-columns:1fr 1fr;}
+  .book-opts{grid-template-columns:1fr 1fr;}
+  .ft-grid{grid-template-columns:1fr;}
+  .band-inner{justify-content:center;}
+  .hero h1{font-size:2.3rem;}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important;}
+}
+
+/* ── PREMIUM ANIMATION SYSTEM ───────────────────────────────────────── */
+
+/* Ripple keyframe */
+@keyframes ripple-expand{
+  to{transform:scale(1);opacity:0;}
+}
+
+/* Gradient sweep (band, shimmer text) */
+@keyframes gradientShift{
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
+}
+
+/* Shimmer sweep over text */
+@keyframes shimmerText{
+  0%{background-position:200% center;}
+  100%{background-position:-200% center;}
+}
+
+/* Floating orbs drift */
+@keyframes orbDrift1{
+  0%,100%{transform:translate(0,0) scale(1);}
+  33%{transform:translate(40px,-30px) scale(1.08);}
+  66%{transform:translate(-25px,20px) scale(0.95);}
+}
+@keyframes orbDrift2{
+  0%,100%{transform:translate(0,0) scale(1);}
+  40%{transform:translate(-50px,35px) scale(1.06);}
+  70%{transform:translate(30px,-20px) scale(0.97);}
+}
+@keyframes orbDrift3{
+  0%,100%{transform:translate(0,0) scale(1);}
+  50%{transform:translate(20px,40px) scale(1.04);}
+}
+
+/* Pulsing glow on WA CTA badge */
+@keyframes waGlow{
+  0%,100%{box-shadow:0 8px 28px rgba(37,211,102,.35);}
+  50%{box-shadow:0 12px 42px rgba(37,211,102,.6), 0 0 0 8px rgba(37,211,102,.08);}
+}
+
+/* Nav CTA badge perpetual pulse */
+@keyframes navCtaPulse{
+  0%,100%{box-shadow:0 4px 14px rgba(37,211,102,.35);}
+  50%{box-shadow:0 6px 22px rgba(37,211,102,.6), 0 0 0 6px rgba(37,211,102,.1);}
+}
+
+/* Shimmer light pass over section headings */
+@keyframes sectionShimmer{
+  from{background-position:200% center;}
+  to{background-position:-200% center;}
+}
+
+/* Floating background orbs (in hero) */
+.max-orb{
+  position:absolute;pointer-events:none;border-radius:50%;
+  filter:blur(80px);will-change:transform;
+}
+.max-orb-1{
+  width:520px;height:520px;
+  top:-80px;right:-120px;
+  background:radial-gradient(circle,rgba(215,43,43,.12) 0%,transparent 70%);
+  animation:orbDrift1 12s ease-in-out infinite;
+}
+.max-orb-2{
+  width:380px;height:380px;
+  bottom:10%;left:-80px;
+  background:radial-gradient(circle,rgba(26,46,122,.2) 0%,transparent 70%);
+  animation:orbDrift2 16s ease-in-out infinite;
+}
+.max-orb-3{
+  width:280px;height:280px;
+  top:40%;right:30%;
+  background:radial-gradient(circle,rgba(215,43,43,.07) 0%,transparent 70%);
+  animation:orbDrift3 20s ease-in-out infinite;
+}
+
+/* Shimmer text effect */
+.gradient-text-shimmer{
+  background:linear-gradient(
+    120deg,
+    var(--red) 0%,
+    #ff8a80 30%,
+    var(--red) 50%,
+    #ff6b6b 70%,
+    var(--red) 100%
+  );
+  background-size:200% auto;
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  animation:shimmerText 4s linear infinite;
+}
+
+/* Animated underline on section tag */
+.s-tag{
+  position:relative;
+  overflow:hidden;
+}
+.s-tag::after{
+  content:'';position:absolute;bottom:0;left:-100%;
+  width:100%;height:1px;background:var(--red);
+  animation:slideRight 2.5s ease-in-out infinite;
+}
+@keyframes slideRight{
+  0%{left:-100%;}50%{left:100%;}100%{left:100%;}
+}
+
+/* Pulsing WhatsApp CTAs */
+.nav-cta{animation:navCtaPulse 2.5s ease-in-out infinite;}
+.wa-btn-card,.btn-wa-full,.book-main{animation:waGlow 2.5s ease-in-out infinite;}
+
+/* Animated hero-pill border pulse */
+.hero-pill{
+  animation:pillBorderPulse 3s ease-in-out infinite;
+}
+@keyframes pillBorderPulse{
+  0%,100%{border-color:rgba(215,43,43,.3);box-shadow:none;}
+  50%{border-color:rgba(215,43,43,.6);box-shadow:0 0 12px rgba(215,43,43,.15);}
+}
+
+/* Glowing bottom bar on section tags ::before */
+.s-tag::before{
+  animation:tagBarGrow 1.5s cubic-bezier(.22,.68,0,1.2) both;
+  animation-delay:0.3s;
+}
+@keyframes tagBarGrow{
+  from{width:0;opacity:0;}
+  to{width:18px;opacity:1;}
+}
+
+/* Service icon bounce on hover */
+.svc:hover .svc-ic{
+  animation:iconBounce .4s cubic-bezier(.22,.68,0,1.2);
+}
+@keyframes iconBounce{
+  0%{transform:scale(1);}
+  50%{transform:scale(1.2);}
+  100%{transform:scale(1.08);}
+}
+
+/* Contact book card shimmer sweep */
+.book-wrap::before{
+  content:'';
+  position:absolute;top:0;left:-150%;bottom:0;
+  width:80px;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.04),transparent);
+  animation:cardShimmer 4s ease-in-out infinite;
+  pointer-events:none;z-index:1;
+}
+@keyframes cardShimmer{
+  0%{left:-150%;}
+  60%,100%{left:150%;}
+}
+
+/* Hero accent line sparkle */
+.hero-accent{
+  animation:accentGlow 3s ease-in-out infinite;
+}
+@keyframes accentGlow{
+  0%,100%{opacity:.6;}
+  50%{opacity:1;filter:drop-shadow(0 0 6px rgba(215,43,43,.5));}
+}
+
+/* Mega menu backdrop shimmer on open */
+.has-mega:hover .mega::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--red),var(--navy),var(--red));
+  background-size:200% auto;
+  animation:gradientShift 2s linear infinite;
+  border-radius:var(--r-lg) var(--r-lg) 0 0;
+}
+
+/* Footer brand image float */
+.ft-brand img{
+  animation:logoFloat 4s ease-in-out infinite;
+}
+@keyframes logoFloat{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-4px);}
+}
+
+/* Band number glowing digits */
+.band-num{
+  text-shadow:0 0 24px rgba(255,255,255,.3);
+  animation:digitGlow 2s ease-in-out infinite;
+}
+@keyframes digitGlow{
+  0%,100%{text-shadow:0 0 24px rgba(255,255,255,.3);}
+  50%{text-shadow:0 0 32px rgba(255,255,255,.6);}
+}
+</style>
+
+<!-- Canonical & SEO Meta Tags -->
+<link rel="canonical" href="http://www.maximushealthcaregh.com/">
+<meta property="og:site_name" content="Maximus HealthCare Consult">
+<meta property="og:title" content="Maximus HealthCare Consult — Ghana's Community-Based Healthcare Access Platform">
+<meta property="og:description" content="Medication delivered to your door across Accra. Monthly chronic care subscriptions. Licensed community pharmacy in East Legon. Corporate wellness and preventive screening.">
+<meta property="og:url" content="http://www.maximushealthcaregh.com/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="http://www.maximushealthcaregh.com/assets/images/logo.jpg">
+<meta property="og:locale" content="en_GH">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Maximus HealthCare Consult — The Greatest HealthCare">
+<meta name="twitter:description" content="Community pharmacy, doorstep prescription delivery, chronic care, and workplace wellness in Accra, Ghana.">
+<meta name="twitter:image" content="http://www.maximushealthcaregh.com/assets/images/logo.jpg">
+<meta name="geo.region" content="GH-AA">
+<meta name="geo.placename" content="East Legon, Accra, Ghana">
+<meta name="keywords" content="pharmacy East Legon, medication delivery Accra, chronic care Ghana, health consultation Accra, corporate wellness Ghana, telehealth Ghana, Maximus HealthCare Consult">
+
+<!-- JSON-LD Structured Data Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": ["MedicalBusiness", "Pharmacy", "LocalBusiness"],
+      "@id": "http://www.maximushealthcaregh.com/#organization",
+      "name": "Maximus HealthCare Consult",
+      "alternateName": "Maximus Pharmacy",
+      "legalName": "Maximus HealthCare Consult Ltd",
+      "url": "http://www.maximushealthcaregh.com/",
+      "logo": "http://www.maximushealthcaregh.com/assets/images/logo.jpg",
+      "image": "http://www.maximushealthcaregh.com/assets/images/logo.jpg",
+      "description": "Ghana's premier community-based healthcare access platform. Superintendent Pharmacist-supervised community pharmacy, same-day medication delivery in Accra, monthly chronic condition subscriptions, corporate wellness programs, and community screenings.",
+      "telephone": "+233248031796",
+      "email": "info@maximushealthcaregh.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "East Legon",
+        "addressLocality": "Accra",
+        "addressRegion": "Greater Accra",
+        "addressCountry": "GH"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "5.6358",
+        "longitude": "-0.1588"
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+          "opens": "08:00",
+          "closes": "21:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Sunday",
+          "opens": "13:00",
+          "closes": "19:00"
+        }
+      ],
+      "priceRange": "$$",
+      "currenciesAccepted": "GHS",
+      "paymentAccepted": "Cash, Mobile Money, Visa, Mastercard, NHIS Guidance",
+      "medicalSpecialty": [
+        "Community Health",
+        "Pharmacy",
+        "Preventive Medicine"
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Healthcare & Pharmacy Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Prescription & Medication Doorstep Delivery",
+              "url": "http://www.maximushealthcaregh.com/service-medication-delivery.html"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Monthly Chronic Care Subscriptions (Hypertension & Diabetes)",
+              "url": "http://www.maximushealthcaregh.com/service-chronic-care.html"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Licensed Community Pharmacy Walk-in & Consultation",
+              "url": "http://www.maximushealthcaregh.com/service-community-pharmacy.html"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Clinical Health Consultation & Referral Navigation",
+              "url": "http://www.maximushealthcaregh.com/service-health-consultation.html"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Corporate Wellness & Executive Health Audits",
+              "url": "http://www.maximushealthcaregh.com/service-corporate-wellness.html"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "School Health & Student Screening Programmes",
+              "url": "http://www.maximushealthcaregh.com/service-school-health.html"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Know Your Numbers Ghana Church & Community Outreach",
+              "url": "http://www.maximushealthcaregh.com/service-community-outreach.html"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Digital Health & WhatsApp Telehealth Consultations",
+              "url": "http://www.maximushealthcaregh.com/service-digital-health.html"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "http://www.maximushealthcaregh.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Services",
+          "item": "http://www.maximushealthcaregh.com/#services"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "About Maximus",
+          "item": "http://www.maximushealthcaregh.com/#about"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Contact",
+          "item": "http://www.maximushealthcaregh.com/#contact"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How fast is medication delivered in Accra?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We offer same-day medication delivery across Accra, typically arriving within 2 to 4 hours of pharmacist verification. Urgent prescriptions are prioritized."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does the chronic care medication subscription work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Patients on maintenance drugs for hypertension, diabetes, or asthma are enrolled into our automated monthly refill system. Your verified medications are automatically dispensed, inspected, and delivered directly to your home or office 3 days before your current supply runs out."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I consult with a pharmacist directly on WhatsApp?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes! Our official WhatsApp line (+233 24 803 1796) connects you directly to our clinical pharmacy team for dosage guidance, medication inquiries, and prescription refills."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the Know Your Numbers Ghana initiative?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Know Your Numbers Ghana is Maximus HealthCare's flagship community health campaign providing free preventive health screenings (blood pressure, blood glucose, BMI, and cholesterol) to churches, schools, and civic associations across Greater Accra."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+<link rel="stylesheet" href="assets/css/services.css">
+</head>
+<body>
+
+<!-- WhatsApp Chatbot initialized via assets/js/wa-chatbot.js (circular widget bottom-left) -->
+
+<!-- Navigation -->
+<header id="nav" role="banner">
+  <a href="index.html" class="nav-logo" aria-label="Maximus HealthCare Consult — Home">
+    <img src="assets/images/logo.jpg" alt="Maximus HealthCare Consult Logo" width="140" height="62" loading="eager">
+  </a>
+
+  <nav class="nav-center" aria-label="Main Navigation">
+    <a href="#home" class="active">Home</a>
+    <div class="has-mega">
+      <a href="#services" aria-haspopup="true">Services ▾</a>
+      <div class="mega" role="menu">
+        <a class="mega-item" href="service-medication-delivery.html" role="menuitem">
+          <div class="mega-ic">🚚</div>
+          <div><h4>Medication Delivery</h4><p>Fast, verified delivery to your doorstep in Accra</p></div>
+        </a>
+        <a class="mega-item" href="service-chronic-care.html" role="menuitem">
+          <div class="mega-ic">🔄</div>
+          <div><h4>Chronic Care Subscriptions</h4><p>Auto-refills for hypertension, diabetes & asthma</p></div>
+        </a>
+        <a class="mega-item" href="service-community-pharmacy.html" role="menuitem">
+          <div class="mega-ic">💊</div>
+          <div><h4>Community Pharmacy</h4><p>Licensed pharmacy & verified supply chain in East Legon</p></div>
+        </a>
+        <a class="mega-item" href="service-health-consultation.html" role="menuitem">
+          <div class="mega-ic">🩺</div>
+          <div><h4>Health Consultation</h4><p>Expert clinical advisory, NHIS guidance & referrals</p></div>
+        </a>
+        <a class="mega-item" href="service-corporate-wellness.html" role="menuitem">
+          <div class="mega-ic">🏢</div>
+          <div><h4>Corporate Wellness</h4><p>Workplace screening & board-ready health reports</p></div>
+        </a>
+        <a class="mega-item" href="service-school-health.html" role="menuitem">
+          <div class="mega-ic">🎓</div>
+          <div><h4>School Health</h4><p>Student health screenings, menstrual & mental wellness</p></div>
+        </a>
+        <a class="mega-item" href="service-community-outreach.html" role="menuitem">
+          <div class="mega-ic">❤️</div>
+          <div><h4>Community Outreach</h4><p>Free 'Know Your Numbers Ghana' health screening days</p></div>
+        </a>
+        <a class="mega-item" href="service-digital-health.html" role="menuitem">
+          <div class="mega-ic">📱</div>
+          <div><h4>Digital Health & Telehealth</h4><p>WhatsApp-first care, teleconsultations & records</p></div>
+        </a>
+      </div>
+    </div>
+    <a href="service-community-pharmacy.html">Pharmacy</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <div class="nav-right">
+    <a href="https://wa.me/233248031796?text=Hello%20Maximus%20HealthCare%20Consult." 
+       class="nav-cta" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Chat on WhatsApp
+    </a>
+    <button class="hamburger" id="hamburger" onclick="openMenu()" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- Mobile Drawer Overlay -->
+<div class="mob-overlay" id="mob-overlay" onclick="closeMenu()"></div>
+
+<!-- Mobile Sliding Drawer -->
+<aside class="mob-drawer" id="mob-drawer" aria-hidden="true">
+  <div class="mob-drawer-head">
+    <img src="assets/images/logo.jpg" alt="Maximus HealthCare Consult">
+    <button class="mob-close" onclick="closeMenu()" aria-label="Close menu">✕</button>
+  </div>
+  <div class="mob-nav-links">
+    <a href="#home" class="active">Home</a>
+    <span style="font-size: 0.78rem; font-weight: 700; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase;">Our Services</span>
+    <div class="mob-services-sub">
+      <a href="service-medication-delivery.html">🚚 Medication Delivery</a>
+      <a href="service-chronic-care.html">🔄 Chronic Care Subscriptions</a>
+      <a href="service-community-pharmacy.html">💊 Community Pharmacy</a>
+      <a href="service-health-consultation.html">🩺 Health Consultation</a>
+      <a href="service-corporate-wellness.html">🏢 Corporate Wellness</a>
+      <a href="service-school-health.html">🎓 School Health</a>
+      <a href="service-community-outreach.html">❤️ Community Outreach</a>
+      <a href="service-digital-health.html">📱 Digital Health & Telehealth</a>
+    </div>
+    <a href="#about" onclick="closeMenu()">About Maximus</a>
+    <a href="#contact" onclick="closeMenu()">Contact & Location</a>
+  </div>
+  <div style="margin-top: auto; padding-top: 1.5rem;">
+    <a href="https://wa.me/233248031796?text=Hello%20Maximus%20HealthCare." class="btn-primary-wa" style="width: 100%; justify-content: center;" target="_blank" rel="noopener">
+      WhatsApp Us Now
+    </a>
+  </div>
+</aside>
+
+<!-- HERO -->
+<section class="hero" id="home" aria-label="Hero">
+  <!-- Interactive 3D Medical Helix Canvas Container -->
+  <div id="hero-3d-canvas-container" style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:1;overflow:hidden;opacity:0.75;"></div>
+  <div class="hero-accent" aria-hidden="true"></div>
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-pill" aria-hidden="true">
+        <div class="hero-pill-dot"></div>
+        East Legon, Accra · Licensed Community Pharmacy
+      </div>
+
+      <h1>
+        Your health, handled.<br>
+        <span>The way it should be.</span>
+      </h1>
+
+      <p class="hero-body">
+        Medication delivered to your door. Chronic conditions managed monthly. 
+        Corporate wellness done properly. All from one licensed, pharmacist-supervised team 
+        you can trust — and reach on WhatsApp in minutes.
+      </p>
+
+      <div class="hero-btns">
+        <a href="https://wa.me/233248031796?text=Hello%20Maximus%2C%20I%20need%20a%20consultation."
+           class="btn-red" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Book a Consultation
+        </a>
+        <a href="#services" class="btn-outline-w">See our services</a>
+      </div>
+
+      <div class="hero-metrics" role="list" aria-label="Key statistics">
+        <div class="metric" role="listitem">
+          <div class="metric-val">5,000+</div>
+          <div class="metric-label">People screened</div>
+        </div>
+        <div class="metric" role="listitem">
+          <div class="metric-val">300+</div>
+          <div class="metric-label">Subscriptions active</div>
+        </div>
+        <div class="metric" role="listitem">
+          <div class="metric-val">20+</div>
+          <div class="metric-label">Corporate clients</div>
+        </div>
+        <div class="metric" role="listitem">
+          <div class="metric-val">Same day</div>
+          <div class="metric-label">Medication delivery</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hero right card -->
+    <div class="hero-card" role="complementary" aria-label="Quick access">
+      <p class="hero-card-hd">What do you need today?</p>
+
+      <a href="https://wa.me/233248031796?text=I%20want%20to%20order%20medication%20for%20delivery." class="qlink" target="_blank" rel="noopener">
+        <div class="qlink-ic">💊</div>
+        <span class="qlink-text">Order medication — delivered to you</span>
+        <span class="qlink-arr" aria-hidden="true">›</span>
+      </a>
+      <a href="https://wa.me/233248031796?text=I%20want%20to%20enrol%20in%20the%20chronic%20care%20subscription." class="qlink" target="_blank" rel="noopener">
+        <div class="qlink-ic">🔄</div>
+        <span class="qlink-text">Set up my monthly medication plan</span>
+        <span class="qlink-arr" aria-hidden="true">›</span>
+      </a>
+      <a href="https://wa.me/233248031796?text=I%20want%20to%20book%20a%20health%20consultation." class="qlink" target="_blank" rel="noopener">
+        <div class="qlink-ic">🩺</div>
+        <span class="qlink-text">Speak with our pharmacist</span>
+        <span class="qlink-arr" aria-hidden="true">›</span>
+      </a>
+      <a href="https://wa.me/233248031796?text=I%20am%20interested%20in%20corporate%20wellness%20for%20my%20organisation." class="qlink" target="_blank" rel="noopener">
+        <div class="qlink-ic">🏢</div>
+        <span class="qlink-text">Corporate wellness for my organisation</span>
+        <span class="qlink-arr" aria-hidden="true">›</span>
+      </a>
+      <a href="https://wa.me/233248031796?text=I%20want%20to%20ask%20a%20health%20question." class="qlink" target="_blank" rel="noopener">
+        <div class="qlink-ic">❓</div>
+        <span class="qlink-text">Ask the pharmacist a health question</span>
+        <span class="qlink-arr" aria-hidden="true">›</span>
+      </a>
+
+      <a href="https://wa.me/233248031796?text=Hello%20Maximus%20HealthCare%20Consult." class="wa-btn-card" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Chat with us on WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Impact band -->
+<div class="band" aria-label="Key statistics">
+  <div class="band-inner">
+    <div class="band-stat">
+      <div class="band-num">5,000+</div>
+      <div class="band-label">Community screenings</div>
+    </div>
+    <div class="band-divider" aria-hidden="true"></div>
+    <div class="band-stat">
+      <div class="band-num">300+</div>
+      <div class="band-label">Chronic care subscribers</div>
+    </div>
+    <div class="band-divider" aria-hidden="true"></div>
+    <div class="band-stat">
+      <div class="band-num">20+</div>
+      <div class="band-label">Corporate clients</div>
+    </div>
+    <div class="band-divider" aria-hidden="true"></div>
+    <div class="band-stat">
+      <div class="band-num">Same day</div>
+      <div class="band-label">Medication delivery</div>
+    </div>
+    <div class="band-divider" aria-hidden="true"></div>
+    <div class="band-stat">
+      <div class="band-num">100%</div>
+      <div class="band-label">Pharmacist-verified orders</div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="s" id="services">
+  <div class="inner">
+    <div class="s-head">
+      <div class="s-tag">What we do</div>
+      <h2>Everything your health needs — <em>in one place</em></h2>
+      <p>From your daily medication to your company's annual wellness programme, we cover it all. Walk-in, WhatsApp, or delivered — healthcare the way it should work for you.</p>
+    </div>
+          <div class="svc-grid">
+        <div class="svc">
+          <div class="svc-ic">💊</div>
+          <h3>Community Pharmacy</h3>
+          <p>A licensed pharmacy you can trust. Every medication verified by our Superintendent Pharmacist. Walk in or order via WhatsApp — we handle the rest.</p>
+          <a href="service-community-pharmacy.html" class="svc-cta">Learn more &amp; order ›</a>
+        </div>
+        <div class="svc">
+          <div class="svc-ic">🚚</div>
+          <h3>Medication Delivery</h3>
+          <p>No more leaving work early to queue at a pharmacy. Send us a WhatsApp message and your medication arrives at your home, office, school, or church — same day across Accra.</p>
+          <a href="service-medication-delivery.html" class="svc-cta">Schedule delivery ›</a>
+        </div>
+        <div class="svc">
+          <div class="svc-ic">🔄</div>
+          <h3>Chronic Care Subscriptions</h3>
+          <p>Hypertension. Diabetes. Asthma. Managing a long-term condition means never missing your medication. Our monthly subscription sends it automatically — so you don't have to think about it.</p>
+          <a href="service-chronic-care.html" class="svc-cta">Enrol in care plan ›</a>
+        </div>
+        <div class="svc">
+          <div class="svc-ic">🩺</div>
+          <h3>Health Consultation</h3>
+          <p>Not sure where to start? Our qualified healthcare team advises on health planning, NHIS enrolment, referrals, and chronic condition management — clearly, without the medical jargon.</p>
+          <a href="service-health-consultation.html" class="svc-cta">Book a session ›</a>
+        </div>
+        <div class="svc">
+          <div class="svc-ic">🏢</div>
+          <h3>Corporate Wellness</h3>
+          <p>Healthy employees are your most productive asset. We deliver structured, annual wellness programmes for companies of every size — with a full written health report after every event.</p>
+          <a href="service-corporate-wellness.html" class="svc-cta">Get a proposal ›</a>
+        </div>
+        <div class="svc">
+          <div class="svc-ic">🎓</div>
+          <h3>School Health Programmes</h3>
+          <p>Students who understand their health perform better. We bring health screening, menstrual health education, and mental health awareness directly to your school — with a written report for every student.</p>
+          <a href="service-school-health.html" class="svc-cta">Explore programme ›</a>
+        </div>
+        <div class="svc">
+          <div class="svc-ic">❤️</div>
+          <h3>Church &amp; Community Outreach</h3>
+          <p>Your congregation deserves to know their numbers. We deliver free health screening events to churches and community groups — blood pressure, blood sugar, cholesterol, and more. No cost to you.</p>
+          <a href="service-community-outreach.html" class="svc-cta">Book free event ›</a>
+        </div>
+        <div class="svc">
+          <div class="svc-ic">📱</div>
+          <h3>Digital Health &amp; Telehealth</h3>
+          <p>A pharmacist in your pocket. Ask health questions, book appointments, manage medication reminders, and access your health records — all through WhatsApp and our growing digital platform.</p>
+          <a href="service-digital-health.html" class="svc-cta">Access digital health ›</a>
+        </div>
+      </div>
+    </div>
+</section>
+
+<!-- ONLINE PHARMACY -->
+<section class="s s-navy" id="pharmacy">
+  <div class="inner">
+    <div class="ph-grid">
+      <!-- Left: steps -->
+      <div>
+        <div class="s-tag" style="color:rgba(215,43,43,.8);">Online Pharmacy</div>
+        <h2 class="ph-heading">You send a message.<br>We deliver the medication.</h2>
+        <p class="ph-body">
+          Accra's most trusted online pharmacy experience. No complicated forms, no uncertainty — just send us a WhatsApp message with your prescription or medication name, and our pharmacist handles everything else. Delivered, sealed, and verified, to wherever you are in Greater Accra.
+        </p>
+        <div class="ph-steps">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div>
+              <h4>Send us a WhatsApp</h4>
+              <p>Photograph your prescription or simply tell us the medication you need. We reply within 15 minutes during working hours.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div>
+              <h4>Pharmacist review — always</h4>
+              <p>Every prescription is reviewed by our licensed Superintendent Pharmacist before we process anything. No prescription medication is dispensed without this step. Full stop.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div>
+              <h4>Confirm, pay, and relax</h4>
+              <p>We confirm pricing and your delivery address, then accept Mobile Money, card, or cash on delivery. Simple, transparent, no surprises.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">4</div>
+            <div>
+              <h4>Arrives at your door</h4>
+              <p>Your medication is dispatched sealed and labelled, with batch number and expiry date confirmed. Track your delivery directly on WhatsApp.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: CTA card -->
+      <div>
+        <div class="ph-card">
+          <h3>Ready to order?</h3>
+          <p class="sub">Chat with us directly on WhatsApp. Monday to Saturday, 8am to 8pm. Emergency consultations available on Sundays.</p>
+          <a href="https://wa.me/233248031796?text=I%20want%20to%20order%20medication%20for%20delivery." class="btn-wa-full" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Order on WhatsApp
+          </a>
+          <div class="ph-trust">
+            <div class="ph-trust-item">
+              <strong>✓ Licensed</strong>
+              <span>Pharmacy Council of Ghana certified</span>
+            </div>
+            <div class="ph-trust-item">
+              <strong>✓ Verified</strong>
+              <span>Every Rx reviewed by a pharmacist</span>
+            </div>
+            <div class="ph-trust-item">
+              <strong>✓ Same Day</strong>
+              <span>Delivery across Greater Accra</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CORPORATE WELLNESS -->
+<section class="s s-smoke" id="corporate">
+  <div class="inner">
+    <div class="s-head">
+      <div class="s-tag">Corporate Wellness</div>
+      <h2>Your healthiest team is your <em>strongest team</em></h2>
+      <p>Employee health is not a HR checkbox. It is a competitive advantage. We design and deliver structured wellness programmes for companies, schools, and institutions across Ghana — with measurable outcomes you can show your board.</p>
+    </div>
+
+    <div class="pkg-grid">
+      <div class="pkg">
+        <div class="pkg-badge">Bronze</div>
+        <h3>Essentials</h3>
+        <div class="pkg-price">GH₵ 2,500 <span>/ year</span></div>
+        <ul class="pkg-list">
+          <li>One full health screening day per year</li>
+          <li>Blood pressure, blood sugar, BMI &amp; cholesterol checks</li>
+          <li>Written health report within 5 business days</li>
+          <li>NHIS enrolment guidance for all staff</li>
+          <li>Follow-up calls for flagged employees</li>
+        </ul>
+        <a href="https://wa.me/233248031796?text=I%20am%20interested%20in%20the%20Bronze%20corporate%20wellness%20package." class="btn-pkg" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Get started on WhatsApp
+        </a>
+      </div>
+
+      <div class="pkg featured">
+        <div class="pkg-badge">Silver · Most Popular</div>
+        <h3>Professional</h3>
+        <div class="pkg-price">GH₵ 5,000 <span>/ year</span></div>
+        <ul class="pkg-list">
+          <li>Quarterly health screening &amp; check-ins</li>
+          <li>Wellness education sessions for all staff</li>
+          <li>Mental health awareness workshop included</li>
+          <li>Staff medication ordering with WhatsApp delivery</li>
+          <li>Detailed quarterly health trend reports</li>
+          <li>Dedicated relationship manager</li>
+        </ul>
+        <a href="https://wa.me/233248031796?text=I%20am%20interested%20in%20the%20Silver%20corporate%20wellness%20package." class="btn-pkg" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Get started on WhatsApp
+        </a>
+      </div>
+
+      <div class="pkg">
+        <div class="pkg-badge">Gold</div>
+        <h3>Executive</h3>
+        <div class="pkg-price">GH₵ 10,000+ <span>/ year</span></div>
+        <ul class="pkg-list">
+          <li>Monthly wellness touchpoints for all staff</li>
+          <li>Executive health assessments included</li>
+          <li>Full occupational health support programme</li>
+          <li>Dedicated pharmacy account manager</li>
+          <li>Custom health programmes and content</li>
+          <li>Priority access for all staff medication needs</li>
+        </ul>
+        <a href="https://wa.me/233248031796?text=I%20am%20interested%20in%20the%20Gold%20corporate%20wellness%20package." class="btn-pkg" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Get started on WhatsApp
+        </a>
+      </div>
+    </div>
+
+    <div class="corp-bottom">
+      <div>
+        <h3>Start with a free health screening day for your entire team.</h3>
+        <p>No payment required to begin. We come in, screen your staff, and present you with a full health report. You decide from there.</p>
+      </div>
+      <a href="https://wa.me/233248031796?text=I%20am%20interested%20in%20a%20free%20health%20screening%20day%20for%20my%20organisation." class="btn-wa-inline" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Request your free screening day
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- COMMUNITY SCREENING -->
+<section class="s" id="screening">
+  <div class="inner">
+    <div class="scr-grid">
+      <div class="checks-grid">
+        <div class="check">
+          <div class="check-emoji">❤️</div>
+          <h4>Blood Pressure</h4>
+          <p>Hypertension shows no symptoms until it is serious. We catch it early.</p>
+        </div>
+        <div class="check">
+          <div class="check-emoji">🩸</div>
+          <h4>Blood Sugar</h4>
+          <p>Thousands of Ghanaians live with undiagnosed diabetes. We find it.</p>
+        </div>
+        <div class="check">
+          <div class="check-emoji">⚖️</div>
+          <h4>BMI</h4>
+          <p>Understand your healthy weight range and what it means for your long-term health.</p>
+        </div>
+        <div class="check">
+          <div class="check-emoji">🫀</div>
+          <h4>Cholesterol</h4>
+          <p>High cholesterol is invisible until a cardiac event. One test changes that.</p>
+        </div>
+        <div class="check">
+          <div class="check-emoji">👁️</div>
+          <h4>Eye Screening</h4>
+          <p>Vision problems caught early are vision problems treated. Free for all ages.</p>
+        </div>
+        <div class="check">
+          <div class="check-emoji">🏥</div>
+          <h4>NHIS Guidance</h4>
+          <p>We help every attendee understand and enrol in the National Health Insurance Scheme.</p>
+        </div>
+      </div>
+
+      <div class="scr-content">
+        <div class="scr-badge">❤️ Know Your Numbers Ghana</div>
+        <h2>Free screening for your church, school, <em>or community.</em></h2>
+        <p>Most conditions that kill Ghanaians early — hypertension, diabetes, high cholesterol — go undetected for years simply because no one has ever checked. We are changing that.</p>
+        <p>Know Your Numbers Ghana brings our licensed team, our equipment, and our pharmacists directly to your location. Every check-up is free. Every result is explained in plain language. Every person with a flag gets a follow-up call within 48 hours.</p>
+        <p>This is not charity. This is what great healthcare actually looks like.</p>
+        <div style="display:flex;gap:.85rem;flex-wrap:wrap;">
+          <a href="https://wa.me/233248031796?text=I%20want%20to%20book%20a%20Know%20Your%20Numbers%20Ghana%20event%20for%20my%20community." class="btn-red" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Book a screening event
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- INTERACTIVE HEALTH RISK & BMI CALCULATOR ("KNOW YOUR NUMBERS") -->
+<section class="s s-smoke" id="health-assessment" aria-label="Interactive Health Diagnostic">
+  <div class="inner">
+    <div class="s-head">
+      <div class="s-tag" style="background:#EBF3FE;color:#1A2E7A;border:1px solid rgba(26,46,122,.15);">Interactive Wellness Diagnostic</div>
+      <h2>Know Your Numbers — <em>Instant Health Check</em></h2>
+      <p>Assess your Body Mass Index (BMI), blood pressure classification, and cardiovascular risk profile in 30 seconds. Your results remain 100% private and can be forwarded to our East Legon pharmacist for clinical guidance.</p>
+    </div>
+
+    <div style="max-width:960px;margin:0 auto;background:#FFFFFF;border-radius:24px;border:1px solid #E2E4F0;box-shadow:0 20px 45px rgba(13,29,86,0.06);padding:3rem 2.5rem;overflow:hidden;position:relative;">
+      <div style="position:absolute;top:0;left:0;right:0;height:6px;background:linear-gradient(90deg, #D72B2B 0%, #1A2E7A 100%);"></div>
+
+      <form id="health-calc-form" onsubmit="return calculateHealthScore(event)">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));gap:1.5rem;margin-bottom:2rem;">
+          <div>
+            <label style="display:block;font-size:0.88rem;font-weight:600;color:#0A0A1A;margin-bottom:0.5rem;" for="calc_age">Your Age (Years)</label>
+            <input type="number" id="calc_age" name="calc_age" min="15" max="100" value="35" style="width:100%;padding:0.85rem 1rem;border:1.5px solid #E2E4F0;border-radius:10px;font-size:1rem;font-family:inherit;" required>
+          </div>
+
+          <div>
+            <label style="display:block;font-size:0.88rem;font-weight:600;color:#0A0A1A;margin-bottom:0.5rem;" for="calc_height">Height (cm)</label>
+            <input type="number" id="calc_height" name="calc_height" min="100" max="240" placeholder="e.g. 172" style="width:100%;padding:0.85rem 1rem;border:1.5px solid #E2E4F0;border-radius:10px;font-size:1rem;font-family:inherit;" required>
+          </div>
+
+          <div>
+            <label style="display:block;font-size:0.88rem;font-weight:600;color:#0A0A1A;margin-bottom:0.5rem;" for="calc_weight">Weight (kg)</label>
+            <input type="number" id="calc_weight" name="calc_weight" min="30" max="250" step="0.5" placeholder="e.g. 74" style="width:100%;padding:0.85rem 1rem;border:1.5px solid #E2E4F0;border-radius:10px;font-size:1rem;font-family:inherit;" required>
+          </div>
+
+          <div>
+            <label style="display:block;font-size:0.88rem;font-weight:600;color:#0A0A1A;margin-bottom:0.5rem;" for="calc_systolic">Systolic BP (mmHg, optional)</label>
+            <input type="number" id="calc_systolic" name="calc_systolic" min="70" max="220" placeholder="Top number, e.g. 120" style="width:100%;padding:0.85rem 1rem;border:1.5px solid #E2E4F0;border-radius:10px;font-size:1rem;font-family:inherit;">
+          </div>
+
+          <div>
+            <label style="display:block;font-size:0.88rem;font-weight:600;color:#0A0A1A;margin-bottom:0.5rem;" for="calc_diastolic">Diastolic BP (mmHg, optional)</label>
+            <input type="number" id="calc_diastolic" name="calc_diastolic" min="40" max="140" placeholder="Bottom number, e.g. 80" style="width:100%;padding:0.85rem 1rem;border:1.5px solid #E2E4F0;border-radius:10px;font-size:1rem;font-family:inherit;">
+          </div>
+
+          <div>
+            <label style="display:block;font-size:0.88rem;font-weight:600;color:#0A0A1A;margin-bottom:0.5rem;" for="calc_glucose">Fasting Sugar (mmol/L, optional)</label>
+            <input type="number" id="calc_glucose" name="calc_glucose" min="2" max="25" step="0.1" placeholder="e.g. 5.4" style="width:100%;padding:0.85rem 1rem;border:1.5px solid #E2E4F0;border-radius:10px;font-size:1rem;font-family:inherit;">
+          </div>
+        </div>
+
+        <div style="text-align:center;">
+          <button type="submit" class="btn-red" style="padding:1rem 2.5rem;font-size:1.05rem;border-radius:12px;display:inline-flex;align-items:center;gap:0.6rem;cursor:pointer;border:none;">
+            <span>⚡ Calculate My Health Profile</span>
+          </button>
+        </div>
+      </form>
+
+      <!-- RESULTS BOX -->
+      <div id="calc-result-box" style="display:none;margin-top:2.5rem;padding-top:2.5rem;border-top:1.5px dashed #E2E4F0;">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));gap:1.5rem;margin-bottom:1.5rem;text-align:center;">
+          <div style="background:#F4F6FC;padding:1.5rem;border-radius:16px;">
+            <div style="font-size:0.82rem;font-weight:700;text-transform:uppercase;color:#5C5C75;letter-spacing:0.05em;margin-bottom:0.35rem;">Wellness Score</div>
+            <div id="calc-score-val" style="font-size:2.2rem;font-weight:800;color:#1A2E7A;font-family:'DM Sans',sans-serif;">--</div>
+          </div>
+
+          <div style="background:#F4F6FC;padding:1.5rem;border-radius:16px;">
+            <div style="font-size:0.82rem;font-weight:700;text-transform:uppercase;color:#5C5C75;letter-spacing:0.05em;margin-bottom:0.35rem;">Your BMI</div>
+            <div id="calc-bmi-val" style="font-size:2.2rem;font-weight:800;color:#0A0A1A;font-family:'DM Sans',sans-serif;">--</div>
+            <div id="calc-bmi-cat" style="font-size:0.88rem;font-weight:700;color:#10B981;margin-top:0.25rem;">Normal</div>
+          </div>
+
+          <div style="background:#F4F6FC;padding:1.5rem;border-radius:16px;">
+            <div style="font-size:0.82rem;font-weight:700;text-transform:uppercase;color:#5C5C75;letter-spacing:0.05em;margin-bottom:0.35rem;">Blood Pressure Status</div>
+            <div id="calc-bp-cat" style="font-size:1.05rem;font-weight:700;color:#1A2E7A;margin-top:0.6rem;line-height:1.4;">--</div>
+          </div>
+        </div>
+
+        <div style="background:#FFF9F5;border:1px solid #FFE4D6;padding:1.25rem 1.5rem;border-radius:14px;margin-bottom:2rem;">
+          <h4 style="font-size:0.95rem;font-weight:700;color:#D72B2B;margin-bottom:0.35rem;">Pharmacist Clinical Note</h4>
+          <p id="calc-advice" style="font-size:0.92rem;color:#4B5563;line-height:1.6;margin:0;">--</p>
+        </div>
+
+        <div style="display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;">
+          <a id="calc-wa-share" href="#" target="_blank" rel="noopener" class="btn-wa" style="display:inline-flex;align-items:center;gap:0.6rem;padding:0.95rem 1.8rem;border-radius:12px;background:#25D366;color:#FFFFFF;font-weight:600;box-shadow:0 8px 20px rgba(37,211,102,0.35);text-decoration:none;">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Send to Pharmacist on WhatsApp
+          </a>
+          <a href="service-health-consultation.html" style="border:1.5px solid #1A2E7A;color:#1A2E7A;padding:0.95rem 1.8rem;border-radius:12px;font-weight:600;display:inline-flex;align-items:center;text-decoration:none;">
+            Book In-Person Consultation
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- WHY MAXIMUS -->
+<section class="s s-smoke" id="about">
+  <div class="inner">
+    <div class="s-head">
+      <div class="s-tag">Why Maximus</div>
+      <h2>Three reasons thousands<br><em>choose us</em></h2>
+    </div>
+    <div class="why-list-outer">
+      <div class="why-row">
+        <div class="why-visual">
+          <div class="why-bg-num" aria-hidden="true">01</div>
+          <div class="why-tag">Clinical safety</div>
+          <div class="why-big">100%</div>
+          <div class="why-big-label">of prescriptions reviewed by a licensed pharmacist before dispensing</div>
+        </div>
+        <div class="why-content">
+          <h3>In Ghana's market, the medication you receive matters as much as getting it.</h3>
+          <p class="lead">Counterfeit and substandard medication is a real problem across Ghana. Our response is non-negotiable: every prescription is reviewed by our Superintendent Pharmacist before a single tablet is packaged. Every supplier is licensed. Every batch number is recorded. If something is wrong with an order, we fix it before it reaches you.</p>
+          <ul class="why-bullets">
+            <li>Pharmacy Council of Ghana licensed operation</li>
+            <li>FDA-approved suppliers — no exceptions</li>
+            <li>Batch number and expiry date tracked for every dispensed item</li>
+            <li>Full adverse reaction escalation pathway to our clinical team</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="why-row flip">
+        <div class="why-visual">
+          <div class="why-bg-num" aria-hidden="true">02</div>
+          <div class="why-tag">Genuine convenience</div>
+          <div class="why-big">Same day</div>
+          <div class="why-big-label">medication delivery across Greater Accra — no queues, no wasted time</div>
+        </div>
+        <div class="why-content">
+          <h3>Healthcare in Ghana asks too much of the people it is supposed to serve.</h3>
+          <p class="lead">Long queues. Unpredictable opening hours. Leaving work early to find a pharmacy that has your medication. We built Maximus HealthCare Consult because this is not acceptable. Message us on WhatsApp. We respond in 15 minutes. Your medication arrives the same day. Healthcare that works around your life — not the other way around.</p>
+          <ul class="why-bullets">
+            <li>WhatsApp ordering — 15-minute response during working hours</li>
+            <li>Same-day delivery to your home, office, school, or church</li>
+            <li>Real-time delivery tracking via WhatsApp</li>
+            <li>Mobile Money, card, and cash on delivery accepted</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="why-row">
+        <div class="why-visual">
+          <div class="why-bg-num" aria-hidden="true">03</div>
+          <div class="why-tag">Community presence</div>
+          <div class="why-big">5,000+</div>
+          <div class="why-big-label">community members screened across Greater Accra and the Central Region</div>
+        </div>
+        <div class="why-content">
+          <h3>We are not here to sell. We are here to serve.</h3>
+          <p class="lead">A pharmacy that only makes money when you are sick is not on your side. We invest in free community screening events, school health programmes, and church outreach — because the healthiest version of Ghana is the version that never needed us for a crisis. We are your healthcare partner before the condition appears, not just after.</p>
+          <ul class="why-bullets">
+            <li>Know Your Numbers Ghana — free community health screenings</li>
+            <li>School health and mental health programmes across Accra</li>
+            <li>Church and community outreach events monthly</li>
+            <li>Aligned with WHO, NHIS, and Ghana's National Health Policy</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="s">
+  <div class="inner">
+    <div class="s-head">
+      <div class="s-tag">What clients say</div>
+      <h2>Their words, <em>not ours</em></h2>
+    </div>
+    <div class="testi-grid">
+      <div class="testi">
+        <div class="testi-marks">&ldquo;</div>
+        <p class="testi-text">I have been managing hypertension and diabetes for seven years. Before Maximus, getting my monthly medication meant taking half a day off work. Now it arrives at my office every month, always the same quality, always on time. I did not realise how much simpler this could be.</p>
+        <div class="testi-footer">
+          <div class="testi-av" style="background:var(--red);">KA</div>
+          <div>
+            <div class="testi-name">Kwame A.</div>
+            <div class="testi-role">Chronic care subscriber · Airport Residential</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi">
+        <div class="testi-marks">&ldquo;</div>
+        <p class="testi-text">We brought Maximus in for our staff wellness day. Two hundred and fifty employees screened. A full written health report on my desk within five days. Three employees were immediately referred for follow-up who had no idea they had elevated blood pressure. That report alone justified the contract.</p>
+        <div class="testi-footer">
+          <div class="testi-av" style="background:var(--navy);">EA</div>
+          <div>
+            <div class="testi-name">Emmanuel A.</div>
+            <div class="testi-role">HR Manager · Corporate wellness client</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi">
+        <div class="testi-marks">&ldquo;</div>
+        <p class="testi-text">They came to our church and screened over four hundred members in one day — completely free. Several of our elders discovered conditions they had lived with for years without knowing. The follow-up calls from the pharmacist were professional and caring. We have already booked them for our next event.</p>
+        <div class="testi-footer">
+          <div class="testi-av" style="background:var(--navy-mid);">DO</div>
+          <div>
+            <div class="testi-name">Pastor Daniel O.</div>
+            <div class="testi-role">Church outreach partner · East Legon</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT / BOOK -->
+<section class="s s-smoke" id="contact">
+  <div class="inner">
+    <div class="book-wrap">
+      <div class="book-content">
+        <div class="s-tag" style="color:rgba(215,43,43,.7);">Get in touch</div>
+        <h2>Every conversation starts with a WhatsApp message.</h2>
+        <p class="lead">No forms to fill. No automated phone systems. No being put on hold. Just a direct message to a real person who knows healthcare — and responds fast. Tell us what you need and we will take care of the rest.</p>
+        <div class="book-details">
+          <div class="book-detail">
+            <span class="book-detail-icon">📍</span>
+            <span>East Legon, Accra, Ghana — serving all of Greater Accra</span>
+          </div>
+          <div class="book-detail">
+            <span class="book-detail-icon">⏰</span>
+            <span>Monday to Saturday, 8am to 8pm · Emergency consultations available Sunday</span>
+          </div>
+          <div class="book-detail">
+            <span class="book-detail-icon">💚</span>
+            <span>WhatsApp response within 15 minutes during working hours</span>
+          </div>
+          <div class="book-detail">
+            <span class="book-detail-icon">🏥</span>
+            <span>Licensed and regulated by the Pharmacy Council of Ghana</span>
+          </div>
+        </div>
+      </div>
+      <div class="book-actions">
+        <a href="https://wa.me/233248031796?text=Hello%20Maximus%20HealthCare%20Consult%2C%20I%20would%20like%20to%20speak%20with%20you." class="book-main" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Chat with us on WhatsApp
+        </a>
+        <div class="book-opts">
+          <a href="https://wa.me/233248031796?text=I%20want%20to%20order%20medication." class="book-opt" target="_blank" rel="noopener">
+            <span class="book-opt-ic">💊</span>Order medication
+          </a>
+          <a href="https://wa.me/233248031796?text=I%20want%20to%20book%20a%20health%20consultation." class="book-opt" target="_blank" rel="noopener">
+            <span class="book-opt-ic">🩺</span>Book consultation
+          </a>
+          <a href="https://wa.me/233248031796?text=I%20want%20corporate%20wellness%20for%20my%20company." class="book-opt" target="_blank" rel="noopener">
+            <span class="book-opt-ic">🏢</span>Corporate wellness
+          </a>
+          <a href="https://wa.me/233248031796?text=I%20want%20to%20enrol%20in%20the%20chronic%20care%20subscription." class="book-opt" target="_blank" rel="noopener">
+            <span class="book-opt-ic">🔄</span>Monthly plan
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-grid">
+    <div class="ft-brand">
+      <img src="assets/images/logo.jpg" alt="Maximus HealthCare Consult" width="126" height="57" loading="lazy">
+      <p>Ghana's trusted community healthcare access platform. Licensed pharmacy. Verified medication. Community health for all.</p>
+    </div>
+    <div class="ft-col">
+            <h4>Services</h4>
+      <ul>
+        <li><a href="service-medication-delivery.html">Medication Delivery</a></li>
+        <li><a href="service-chronic-care.html">Chronic Care Subscriptions</a></li>
+        <li><a href="service-community-pharmacy.html">Community Pharmacy</a></li>
+        <li><a href="service-health-consultation.html">Health Consultation</a></li>
+        <li><a href="service-corporate-wellness.html">Corporate Wellness</a></li>
+        <li><a href="service-school-health.html">School Health Programmes</a></li>
+        <li><a href="service-community-outreach.html">Community Outreach</a></li>
+        <li><a href="service-digital-health.html">Digital Health Platform</a></li>
+      </ul>
+    </div>
+    <div class="ft-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#about">Our Mission</a></li>
+        <li><a href="https://wa.me/233248031796?text=I%20want%20to%20partner%20with%20Maximus." target="_blank" rel="noopener">Partnerships</a></li>
+        <li><a href="https://wa.me/233248031796?text=Tell%20me%20about%20the%20Healthy%20Communities%20Ghana%20programme." target="_blank" rel="noopener">Healthy Communities Ghana</a></li>
+      </ul>
+    </div>
+    <div class="ft-col">
+            <h4>Contact</h4>
+      <ul>
+        <li><a href="tel:+233248031796">+233 24 803 1796</a></li>
+        <li><a href="https://wa.me/233248031796" target="_blank" rel="noopener">WhatsApp Support</a></li>
+        <li><a href="mailto:info@maximushealthcaregh.com">info@maximushealthcaregh.com</a></li>
+        <li><a href="http://www.maximushealthcaregh.com/">www.maximushealthcaregh.com</a></li>
+        <li>East Legon, Accra, Ghana</li>
+      </ul>
+    </div>
+  </div>
+  <div class="ft-bottom">
+    <span class="ft-bottom-text">&copy; 2026 Maximus HealthCare Consult. All rights reserved. Licensed by the Pharmacy Council of Ghana &amp; FDA.</span>
+    <a href="https://wa.me/233248031796?text=Hello%20Maximus." class="ft-wa-badge" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Chat on WhatsApp
+    </a>
+  </div>
+</footer>
+
+<script>
+// Nav scroll state
+const nav = document.getElementById('nav');
+const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 36);
+window.addEventListener('scroll', onScroll, {passive:true});
+onScroll();
+
+// Mobile menu
+const drawer  = document.getElementById('mob-drawer');
+const overlay = document.getElementById('mob-overlay');
+const burger  = document.getElementById('hamburger');
+function openMenu()  { drawer.classList.add('on'); overlay.classList.add('on'); burger.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; }
+function closeMenu() { drawer.classList.remove('on'); overlay.classList.remove('on'); burger.setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const t = document.querySelector(a.getAttribute('href'));
+    if (t) { e.preventDefault(); closeMenu(); t.scrollIntoView({behavior:'smooth',block:'start'}); }
+  });
+});
+
+// Entrance reveal handled by assets/js/animations.js
+</script>
+
+<!-- Interactive 3D WebGL Hero, Health Assessment & Bottom-Left Circular WhatsApp Chatbot -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="assets/js/three-hero.js"></script>
+<script src="assets/js/health-calculator.js"></script>
+<script src="assets/js/wa-chatbot.js"></script>
+<script src="assets/js/nav.js"></script>
+<script src="assets/js/animations.js" defer></script>
+</body>
+</html>
