@@ -11,7 +11,7 @@
 <style>
 /* ── Reset ─────────────────────────────────────────────────── */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;overflow-x:hidden;}
 img{display:block;max-width:100%}
 a{text-decoration:none;color:inherit}
 button{cursor:pointer;border:none;background:none;font:inherit}
@@ -62,9 +62,8 @@ p{color:var(--muted);}
 #nav{
   position:fixed;top:0;left:0;right:0;z-index:999;
   height:var(--nav-h);
-  display:flex;align-items:center;
+  display:flex;align-items:center;justify-content:space-between;
   padding:0 5%;
-  gap:auto;
   transition:background .4s ease,backdrop-filter .4s ease,box-shadow .4s ease;
 }
 #nav.scrolled{
@@ -128,7 +127,7 @@ p{color:var(--muted);}
 .mega-item h4{font-size:.84rem;font-weight:600;color:var(--navy);margin-bottom:.15rem;}
 .mega-item p{font-size:.76rem;color:var(--muted);max-width:none;line-height:1.4;}
 
-.nav-right{display:flex;align-items:center;gap:.75rem;}
+.nav-right{display:flex;align-items:center;gap:.75rem;margin-left:auto;}
 .nav-cta{
   display:inline-flex;align-items:center;gap:.45rem;
   background:var(--wa);color:var(--white);
@@ -850,34 +849,302 @@ footer{
 }
 .mob-wa svg{width:18px;height:18px;fill:currentColor;}
 
-/* ── Responsive ─────────────────────────────────────────── */
-@media(max-width:1100px){
-  .svc-grid{grid-template-columns:repeat(2,1fr);}
+/* ══════════════════════════════════════════════════════════
+   RESPONSIVE SYSTEM — Mobile-First, Device-Optimised
+   Breakpoints: 1200 → 992 → 768 → 560 → 420
+   ══════════════════════════════════════════════════════════ */
+
+/* ── 1200px: Large tablet / small desktop ─────────────── */
+@media(max-width:1200px){
+  .svc-grid{grid-template-columns:repeat(3,1fr);}
+  .ft-grid{grid-template-columns:1.4fr 1fr 1fr 1fr;}
 }
-@media(max-width:900px){
-  .hero-inner,.ph-grid,.why-row,.scr-grid,.book-wrap,.ft-grid{grid-template-columns:1fr;}
-  .why-row.flip{direction:ltr;}
-  .hero-card,.band-divider{display:none;}
+
+/* ── 992px: iPad landscape / tablet ──────────────────── */
+@media(max-width:992px){
+  /* Nav */
   .nav-center,.nav-cta{display:none;}
   .hamburger{display:flex;}
-  .hero{padding-top:calc(var(--nav-h) + 2.5rem);}
-  .pkg-grid{grid-template-columns:1fr;}
+
+  /* Hero */
+  .hero-inner{
+    grid-template-columns:1fr;
+    gap:2.5rem;
+    padding-bottom:4rem;
+  }
+  .hero{
+    padding-top:calc(var(--nav-h) + 3rem);
+    padding-bottom:4rem;
+    min-height:auto;
+  }
+  .hero-card{display:none;}
+  .hero h1{font-size:clamp(2.5rem,5vw,3.5rem);}
+  .hero-body{max-width:60ch;}
+  .hero-metrics{gap:2rem;}
+
+  /* Services */
+  .svc-grid{grid-template-columns:repeat(2,1fr);gap:1rem;}
+
+  /* Band */
+  .band-divider{display:none;}
+  .band-inner{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:1.25rem;
+    justify-items:center;
+  }
+
+  /* Pharmacy */
+  .ph-grid{grid-template-columns:1fr;gap:2.5rem;}
+  .ph-card{position:static;}
+
+  /* Why us */
+  .why-row{grid-template-columns:1fr;gap:2rem;}
+  .why-row.flip{direction:ltr;}
+  .why-row.flip>*{direction:ltr;}
+  .why-visual{min-height:220px;}
+
+  /* Screening */
+  .scr-grid{grid-template-columns:1fr;gap:2.5rem;}
+  .checks-grid{grid-template-columns:repeat(2,1fr);}
+
+  /* Corporate */
+  .pkg-grid{grid-template-columns:repeat(2,1fr);}
+  .corp-bottom{
+    flex-direction:column;
+    text-align:center;
+    gap:1.5rem;
+    align-items:center;
+  }
+
+  /* Testimonials */
+  .testi-grid{grid-template-columns:repeat(2,1fr);}
+
+  /* Book/Contact */
+  .book-wrap{
+    grid-template-columns:1fr;
+    padding:2.5rem;
+    gap:2rem;
+  }
+  .book-opts{grid-template-columns:repeat(2,1fr);}
+
+  /* Footer */
+  .ft-grid{
+    grid-template-columns:1fr 1fr;
+    gap:2rem;
+  }
+  .ft-bottom{flex-direction:column;gap:.5rem;text-align:center;}
+}
+
+/* ── 768px: iPad portrait ────────────────────────────── */
+@media(max-width:768px){
+  /* Sections */
+  .s{padding:4.5rem 5%;}
+  .s-head{margin-bottom:2.5rem;}
+
+  /* Hero */
+  .hero h1{font-size:clamp(2.2rem,6vw,3rem);}
+  .hero-body{font-size:.95rem;}
+  .hero-btns{gap:.65rem;}
+  .btn-red,.btn-outline-w{
+    padding:.8rem 1.5rem;
+    font-size:.88rem;
+  }
+  .hero-metrics{
+    gap:1.5rem;
+    margin-top:2.5rem;
+    padding-top:1.75rem;
+  }
+  .metric-val{font-size:1.4rem;}
+
+  /* Service cards */
+  .svc-grid{grid-template-columns:repeat(2,1fr);gap:.85rem;}
+  .svc{padding:1.5rem 1.25rem;}
+
+  /* Band */
+  .band-inner{
+    grid-template-columns:repeat(2,1fr);
+    gap:1rem;
+  }
+  .band-num{font-size:1.45rem;}
+
+  /* Pharmacy */
+  .ph-heading{font-size:1.85rem;}
+
+  /* Corporate packages */
+  .pkg-grid{grid-template-columns:1fr;gap:1rem;}
+  .pkg.featured{order:-1;}
+
+  /* Why us visual */
+  .why-big{font-size:2rem;}
+
+  /* Testimonials */
   .testi-grid{grid-template-columns:1fr;}
-  .ft-grid{grid-template-columns:1fr 1fr;}
-  .book-wrap{padding:2.5rem;}
-  .corp-bottom{flex-direction:column;text-align:center;}
+
+  /* Footer */
+  .ft-grid{grid-template-columns:1fr 1fr;gap:1.75rem;}
 }
+
+/* ── 560px: Large phones ──────────────────────────────── */
 @media(max-width:560px){
-  .s{padding:4rem 5%;}
-  .svc-grid{grid-template-columns:1fr;}
-  .checks-grid{grid-template-columns:1fr 1fr;}
-  .book-opts{grid-template-columns:1fr 1fr;}
-  .ft-grid{grid-template-columns:1fr;}
-  .band-inner{justify-content:center;}
-  .hero h1{font-size:2.3rem;}
+  /* Root adjustments */
+  :root{--nav-h:64px;}
+
+  /* Sections */
+  .s{padding:3.5rem 4.5%;}
+  .s-head{margin-bottom:2rem;}
+  .s-head h2{font-size:1.7rem;}
+
+  /* Hero */
+  .hero{
+    padding:calc(var(--nav-h) + 2.5rem) 4.5% 3.5rem;
+    min-height:auto;
+    align-items:flex-start;
+  }
+  .hero h1{
+    font-size:clamp(2rem,7vw,2.5rem);
+    letter-spacing:-.02em;
+  }
+  .hero-body{
+    font-size:.9rem;
+    line-height:1.65;
+    margin-bottom:2rem;
+    max-width:100%;
+  }
+  .hero-pill{font-size:.7rem;}
+  .hero-btns{
+    flex-direction:column;
+    gap:.6rem;
+    width:100%;
+  }
+  .btn-red,.btn-outline-w{
+    width:100%;
+    justify-content:center;
+    padding:.9rem 1.25rem;
+    font-size:.9rem;
+  }
+  .hero-metrics{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:1.25rem;
+    margin-top:2rem;
+    padding-top:1.5rem;
+  }
+  .metric-val{font-size:1.3rem;}
+
+  /* Nav logo */
+  .nav-logo img{height:36px;}
+
+  /* Band */
+  .band{padding:1.25rem 4.5%;}
+  .band-inner{
+    grid-template-columns:1fr 1fr;
+    gap:1rem;
+    justify-items:center;
+  }
+  .band-num{font-size:1.35rem;}
+  .band-label{font-size:.65rem;}
+
+  /* Service cards */
+  .svc-grid{grid-template-columns:1fr;gap:.75rem;}
+  .svc{padding:1.35rem 1.1rem;}
+  .svc-ic{width:42px;height:42px;font-size:1.1rem;}
+
+  /* Pharmacy */
+  .ph-heading{font-size:1.6rem;}
+  .ph-body{font-size:.88rem;}
+  .ph-steps{gap:.65rem;}
+  .step{gap:.85rem;padding:.9rem 1rem;}
+  .step-num{width:30px;height:30px;font-size:.72rem;}
+
+  /* Check grid */
+  .checks-grid{grid-template-columns:1fr 1fr;gap:.65rem;}
+  .check{padding:1.1rem .85rem;}
+  .check-emoji{font-size:1.3rem;}
+  .check h4{font-size:.82rem;}
+  .check p{font-size:.7rem;}
+
+  /* Corporate */
+  .pkg-grid{grid-template-columns:1fr;gap:.85rem;}
+  .pkg{padding:1.75rem 1.4rem;}
+  .corp-bottom{padding:2rem 1.5rem;}
+  .corp-bottom h3{font-size:1.15rem;}
+
+  /* Why */
+  .why-list-outer{gap:2.5rem;}
+  .why-visual{padding:2rem;min-height:180px;}
+  .why-big{font-size:1.75rem;}
+
+  /* Testimonials */
+  .testi-grid{grid-template-columns:1fr;gap:.85rem;}
+  .testi{padding:1.5rem 1.25rem;}
+  .testi-marks{font-size:2.25rem;}
+  .testi-text{font-size:.83rem;}
+
+  /* Book/contact */
+  .book-wrap{
+    padding:2rem 1.35rem;
+    border-radius:var(--r-lg);
+  }
+  .book-content h2{font-size:1.5rem;}
+  .book-opts{grid-template-columns:1fr 1fr;gap:.5rem;}
+  .book-opt{padding:.75rem .5rem;font-size:.74rem;}
+
+  /* Footer */
+  .ft-grid{grid-template-columns:1fr;gap:1.75rem;}
+  .ft-brand p{max-width:100%;}
+  .ft-bottom{
+    flex-direction:column;
+    gap:.65rem;
+    text-align:center;
+  }
+  .ft-bottom-text{font-size:.72rem;}
+
+  /* Mobile drawer */
+  .mob-drawer{width:min(88%,320px);}
+
+  /* Floating WA button */
+  .float-wa{
+    width:50px;height:50px;
+    bottom:1.25rem;right:1.25rem;
+  }
+  .float-wa svg{width:24px;height:24px;}
 }
+
+/* ── 420px: Small phones ──────────────────────────────── */
+@media(max-width:420px){
+  .s{padding:3rem 4%;}
+  .s-head h2{font-size:1.5rem;}
+
+  .hero h1{font-size:1.9rem;}
+  .hero-pill{font-size:.65rem;padding:.28rem .75rem;}
+
+  .hero-metrics{grid-template-columns:1fr 1fr;gap:.85rem;}
+  .metric-val{font-size:1.15rem;}
+  .metric-label{font-size:.62rem;}
+
+  .band-inner{grid-template-columns:1fr 1fr;}
+  .band-num{font-size:1.2rem;}
+
+  .svc h3{font-size:.9rem;}
+  .svc p{font-size:.78rem;}
+
+  .checks-grid{grid-template-columns:1fr 1fr;}
+  .check{padding:.9rem .7rem;}
+  .check h4{font-size:.78rem;}
+
+  .book-opts{grid-template-columns:1fr;}
+
+  .testi{padding:1.25rem 1rem;}
+
+  .pkg{padding:1.5rem 1.1rem;}
+
+  .mob-wa{font-size:.85rem;}
+}
+
+/* ── Accessibility ────────────────────────────────────── */
 @media(prefers-reduced-motion:reduce){
-  *{animation:none!important;transition:none!important;}
+  *{animation:none!important;transition:duration:.01ms!important;}
 }
 
 /* ── PREMIUM ANIMATION SYSTEM ───────────────────────────────────────── */

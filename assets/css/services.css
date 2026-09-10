@@ -158,6 +158,7 @@
 html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
+  overflow-x: hidden;
 }
 
 img {
@@ -282,6 +283,7 @@ p {
   height: var(--nav-h);
   display: flex;
   align-items: center;
+  justify-content: space-between;
   padding: 0 5%;
   background: rgba(13, 29, 86, 0.88);
   backdrop-filter: blur(20px);
@@ -448,6 +450,7 @@ p {
   display: flex;
   align-items: center;
   gap: 1rem;
+  margin-left: auto;
 }
 
 .nav-cta {
@@ -1407,8 +1410,25 @@ footer {
   color: rgba(255, 255, 255, 0.45);
 }
 
-/* ── Responsive Queries ────────────────────────────────────────────────── */
+/* ══════════════════════════════════════════════════════════
+   RESPONSIVE — Service Pages
+   Breakpoints: 1200 → 992 → 768 → 560 → 420
+   ══════════════════════════════════════════════════════════ */
+
+/* ── 1200px ───────────────────────────────────────────── */
+@media (max-width: 1200px) {
+  .comparison-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .footer-top {
+    grid-template-columns: 1.4fr 1fr 1fr;
+    gap: 2.5rem;
+  }
+}
+
+/* ── 992px: Tablet landscape ──────────────────────────── */
 @media (max-width: 992px) {
+  /* Nav */
   .nav-center,
   .nav-cta {
     display: none;
@@ -1416,34 +1436,340 @@ footer {
   .hamburger {
     display: flex;
   }
+
+  /* Service hero */
+  .service-hero,
+  .hero-3d-wrapper {
+    padding: calc(var(--nav-h) + 3rem) 5% 4rem;
+  }
+  .service-hero-inner {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .service-hero-title {
+    font-size: clamp(2.2rem, 5vw, 3rem);
+  }
+  .hero-cta-group {
+    flex-direction: row;
+    gap: .75rem;
+  }
+
+  /* Form & calc */
   .form-layout,
   .calc-grid {
     grid-template-columns: 1fr;
     gap: 2.5rem;
   }
+  .form-card,
+  .calc-card {
+    position: static;
+  }
+
+  /* Comparison */
   .comparison-grid {
     grid-template-columns: 1fr;
+    gap: 1.25rem;
   }
+  .comparison-card.featured {
+    order: -1;
+  }
+
+  /* Info/features grid */
+  .features-grid,
+  .info-grid,
+  .steps-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+
+  /* Testimonials */
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Footer */
   .footer-top {
     grid-template-columns: 1fr 1fr;
-    gap: 2.5rem;
+    gap: 2rem;
+  }
+  .footer-bottom {
+    flex-direction: column;
+    gap: .65rem;
+    text-align: center;
   }
 }
 
-@media (max-width: 640px) {
-  .hero-3d-wrapper,
-  .service-hero {
-    padding: calc(var(--nav-h) + 2rem) 0 3.5rem;
+/* ── 768px: iPad portrait ─────────────────────────────── */
+@media (max-width: 768px) {
+  /* Section spacing */
+  .section {
+    padding: 4.5rem 5%;
   }
+  .section-header {
+    margin-bottom: 2.5rem;
+  }
+  .section-title {
+    font-size: clamp(1.75rem, 4vw, 2.25rem);
+  }
+
+  /* Hero */
+  .service-hero-title {
+    font-size: clamp(2rem, 5.5vw, 2.6rem);
+  }
+  .service-hero-sub {
+    font-size: .95rem;
+  }
+  .hero-cta-group {
+    gap: .65rem;
+  }
+  .btn-primary-wa,
+  .btn-secondary {
+    padding: .85rem 1.5rem;
+    font-size: .88rem;
+  }
+
+  /* Stats row */
+  .stats-row {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  /* Features */
+  .features-grid,
+  .info-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  /* Comparison */
+  .comparison-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Form card */
+  .form-card,
+  .calc-card {
+    padding: 2rem 1.5rem;
+  }
+
+  /* Footer */
+  .footer-top {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* ── 560px: Large phones ──────────────────────────────── */
+@media (max-width: 560px) {
+  /* Root */
+  :root {
+    --nav-h: 64px;
+  }
+
+  /* Section spacing */
+  .section {
+    padding: 3.5rem 4.5%;
+  }
+  .section-header {
+    margin-bottom: 2rem;
+  }
+  .section-title {
+    font-size: 1.65rem;
+    letter-spacing: -.02em;
+  }
+  .section-sub {
+    font-size: .88rem;
+  }
+
+  /* Nav logo */
+  .nav-logo img {
+    height: 36px;
+  }
+
+  /* Service hero */
+  .service-hero,
+  .hero-3d-wrapper {
+    padding: calc(var(--nav-h) + 2rem) 4.5% 3rem;
+    min-height: auto;
+  }
+  .service-hero-title {
+    font-size: clamp(1.85rem, 7vw, 2.4rem);
+  }
+  .service-hero-sub {
+    font-size: .88rem;
+    line-height: 1.65;
+  }
+  .hero-cta-group {
+    flex-direction: column;
+    gap: .65rem;
+    width: 100%;
+  }
+  .btn-primary-wa,
+  .btn-secondary {
+    width: 100%;
+    justify-content: center;
+    padding: .9rem 1.25rem;
+    font-size: .9rem;
+  }
+
+  /* Stats row */
+  .stats-row {
+    grid-template-columns: 1fr 1fr;
+    gap: .85rem;
+  }
+  .stat-number {
+    font-size: 1.5rem;
+  }
+  .stat-label {
+    font-size: .7rem;
+  }
+
+  /* Features / info grid */
+  .features-grid,
+  .info-grid,
+  .steps-grid {
+    grid-template-columns: 1fr;
+    gap: .85rem;
+  }
+
+  /* Feature card */
+  .feature-card,
+  .info-card {
+    padding: 1.35rem 1.1rem;
+  }
+
+  /* Comparison */
+  .comparison-grid {
+    grid-template-columns: 1fr;
+    gap: .85rem;
+  }
+  .comparison-card {
+    padding: 1.75rem 1.4rem;
+  }
+
+  /* Calc input row */
+  .calc-input-row {
+    grid-template-columns: 1fr;
+    gap: .85rem;
+  }
+
+  /* Form card */
   .form-card,
   .calc-card {
     padding: 1.75rem 1.25rem;
+    border-radius: var(--r-lg);
   }
-  .calc-input-row {
+  .form-group label {
+    font-size: .82rem;
+  }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    font-size: .88rem;
+    padding: .75rem 1rem;
+  }
+
+  /* Steps */
+  .step-card {
+    flex-direction: row;
+    gap: 1rem;
+    padding: 1rem 1.1rem;
+  }
+
+  /* Testimonials */
+  .testimonials-grid {
     grid-template-columns: 1fr;
+    gap: .85rem;
   }
+  .testimonial-card {
+    padding: 1.5rem 1.25rem;
+  }
+
+  /* CTA banner */
+  .cta-banner {
+    padding: 2.5rem 1.5rem;
+    text-align: center;
+  }
+  .cta-banner-title {
+    font-size: 1.5rem;
+  }
+  .cta-banner-inner {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  /* Footer */
   .footer-top {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 1.75rem;
+  }
+  .footer-brand p {
+    max-width: 100%;
+  }
+  .footer-bottom {
+    flex-direction: column;
+    gap: .6rem;
+    text-align: center;
+    font-size: .76rem;
+  }
+
+  /* Mobile drawer */
+  .mob-drawer {
+    width: min(88%, 320px);
+  }
+
+  /* WA chatbot widget */
+  .wa-chat-widget {
+    bottom: 1.25rem;
+    left: 1.25rem;
+  }
+  .wa-chat-widget .wa-toggle-btn {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+/* ── 420px: Small phones ──────────────────────────────── */
+@media (max-width: 420px) {
+  .section {
+    padding: 3rem 4%;
+  }
+  .section-title {
+    font-size: 1.45rem;
+  }
+  .service-hero-title {
+    font-size: 1.8rem;
+  }
+  .stats-row {
+    grid-template-columns: 1fr 1fr;
+  }
+  .stat-number {
+    font-size: 1.3rem;
+  }
+  .btn-primary-wa,
+  .btn-secondary {
+    font-size: .85rem;
+    padding: .85rem 1rem;
+  }
+  .comparison-card {
+    padding: 1.5rem 1.1rem;
+  }
+  .feature-card,
+  .info-card {
+    padding: 1.1rem .9rem;
+  }
+  .cta-banner-title {
+    font-size: 1.3rem;
+  }
+  .mob-wa {
+    font-size: .85rem;
+  }
+}
+
+/* ── Accessibility ────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition-duration: .01ms !important;
   }
 }

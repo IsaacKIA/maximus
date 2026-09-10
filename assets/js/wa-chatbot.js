@@ -403,6 +403,29 @@
       fill: #FFFFFF;
       transform: translateX(1px);
     }
+
+    @media (max-width: 480px) {
+      .maximus-wa-fab {
+        width: 50px;
+        height: 50px;
+        bottom: 16px;
+        left: 16px;
+      }
+      .maximus-wa-fab svg {
+        width: 24px;
+        height: 24px;
+      }
+      .maximus-chat-window {
+        left: 10px;
+        right: 10px;
+        width: calc(100vw - 20px);
+        max-width: calc(100vw - 20px);
+        bottom: 74px;
+        height: calc(100dvh - 90px);
+        max-height: 520px;
+        border-radius: 16px;
+      }
+    }
   `;
   document.head.appendChild(style);
 
